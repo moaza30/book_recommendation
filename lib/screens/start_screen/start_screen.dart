@@ -1,4 +1,4 @@
-import 'package:book_recommendation/screens/start_uo_screen/screen_style.dart';
+import 'package:book_recommendation/screens/start_screen/screen_style.dart';
 import 'package:flutter/material.dart';
 
 class StartScreen extends StatelessWidget {
