@@ -1,4 +1,5 @@
-import 'package:book_recommendation/home_screen.dart';
+import 'package:book_recommendation/screens/sign_up_screen/sign_up_screen.dart';
+import 'package:book_recommendation/screens/start_uo_screen/start_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,7 +12,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: HomeScreen(),
+      home: StartScreen(),
+      routes: {
+        SignUpScreen.routename: (context) => SignUpScreen(),
+        StartScreen.routename: (context) => StartScreen(),
+      },
     );
   }
 }
