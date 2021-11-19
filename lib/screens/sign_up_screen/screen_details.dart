@@ -1,5 +1,6 @@
 import 'package:book_recommendation/screens/sign_up_screen/sign_uo_details.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SignUpBody extends StatefulWidget {
   @override
@@ -8,6 +9,8 @@ class SignUpBody extends StatefulWidget {
 
 class _SignUpBodyState extends State<SignUpBody> {
   bool value = false;
+  void userSignUp() {}
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -71,7 +74,10 @@ class _SignUpBodyState extends State<SignUpBody> {
                 ),
                 padding: EdgeInsets.all(20),
               ),
-              onPressed: () {},
+              //-----------
+              onPressed: () {
+                userSignUp();
+              },
               child: Text(
                 'Sign Up',
                 style: TextStyle(

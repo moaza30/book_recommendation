@@ -1,17 +1,15 @@
-import 'package:book_recommendation/screens/sign_up_screen/screen_details.dart';
-import 'package:book_recommendation/screens/sign_up_screen/sign_uo_details.dart';
+import 'package:book_recommendation/screens/sign_in_screen/screen_details.dart';
 import 'package:book_recommendation/screens/start_screen/start_screen.dart';
 import 'package:flutter/material.dart';
 
-class SignUpScreen extends StatefulWidget {
-  static const String routename = 'SignUp';
+class SignInScreen extends StatefulWidget {
+  static const String routename = 'SignIn';
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<SignInScreen> createState() => _SignInScreenState();
 }
 
-class _SignUpScreenState extends State<SignUpScreen> {
-  bool value = false;
+class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +28,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
         ),
       ),
-      body: SignUpBody(),
+      body: SignInBody(),
     );
   }
 }

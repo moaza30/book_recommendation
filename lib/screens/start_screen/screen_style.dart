@@ -1,3 +1,4 @@
+import 'package:book_recommendation/screens/sign_in_screen/sign_in_screnn.dart';
 import 'package:book_recommendation/screens/sign_up_screen/sign_up_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +34,9 @@ class StartScreenStyle extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(SignInScreen.routename);
+              },
               child: Text(
                 'Sign in',
                 style: TextStyle(fontSize: 15),
