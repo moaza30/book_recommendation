@@ -32,8 +32,9 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0.0,
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
+        elevation: 0.0,
         title: AppBarContent(),
       ),
       body: screens[currentScreenIndex],
