@@ -1,5 +1,5 @@
 import 'package:book_recommendation/screens/sign_up_screen/screen_details.dart';
-import 'package:book_recommendation/screens/sign_up_screen/sign_uo_details.dart';
+import 'package:book_recommendation/models/Signing_screen_details.dart';
 import 'package:book_recommendation/screens/start_screen/start_screen.dart';
 import 'package:flutter/material.dart';
 

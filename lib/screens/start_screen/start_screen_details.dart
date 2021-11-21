@@ -1,3 +1,4 @@
+import 'package:book_recommendation/screens/home_screen/main_screen.dart';
 import 'package:book_recommendation/screens/sign_in_screen/sign_in_screnn.dart';
 import 'package:book_recommendation/screens/sign_up_screen/sign_up_screen.dart';
 import 'package:flutter/material.dart';
@@ -74,7 +75,9 @@ class StartScreenStyle extends StatelessWidget {
             child: Align(
               alignment: Alignment.bottomRight,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushNamed(MainScreen.routeName);
+                },
                 child: Text(
                   'Skip ',
                   style: TextStyle(

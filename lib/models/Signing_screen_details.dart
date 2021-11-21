@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class SignUpDetails extends StatelessWidget {
+class SigningDetails extends StatelessWidget {
   late String textdata;
-  SignUpDetails(this.textdata);
+  SigningDetails(this.textdata);
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -1,4 +1,4 @@
-import 'package:book_recommendation/screens/sign_up_screen/sign_uo_details.dart';
+import 'package:book_recommendation/models/Signing_screen_details.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -26,8 +26,8 @@ class _SignInBodyState extends State<SignInBody> {
             ),
           ),
           // Sign Up Details
-          SignUpDetails('Email Address'),
-          SignUpDetails('Password'),
+          SigningDetails('Email Address'),
+          SigningDetails('Password'),
           // This Container For Sign Up CheckBox
           Container(
             margin: EdgeInsets.only(left: 10, top: 10),
