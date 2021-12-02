@@ -11,7 +11,7 @@ class SigningDetails extends StatelessWidget {
           margin: EdgeInsets.symmetric(horizontal: 20).add(
             EdgeInsets.only(top: 20),
           ),
-          child: TextField(
+          child: TextFormField(
             decoration: InputDecoration(
               contentPadding: EdgeInsets.all(20),
               filled: true,

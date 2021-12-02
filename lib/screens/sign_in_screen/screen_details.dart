@@ -1,4 +1,4 @@
-import 'package:book_recommendation/models/Signing_screen_details.dart';
+import 'package:book_recommendation/widgets/Signing_screen_details.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
