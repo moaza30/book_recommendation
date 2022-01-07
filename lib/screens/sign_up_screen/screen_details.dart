@@ -1,6 +1,6 @@
+import 'package:book_recommendation/screens/home_screen/main_screen.dart';
 import 'package:book_recommendation/screens/sign_up_screen/check_box.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:book_recommendation/controllers/auth_provider.dart';
 import 'package:email_validator/email_validator.dart';
@@ -38,206 +38,211 @@ class _SignUpBodyState extends State<SignUpBody> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        children: [
-          //Start of Column
-          Container(
-            padding: EdgeInsets.only(left: 20),
-            alignment: Alignment.topLeft,
-            child: Text(
-              'Sign Up',
-              style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
-            ),
-          ),
-          // Sign Up Details
-          Container(
-            margin: const EdgeInsets.symmetric(horizontal: 20).add(
-              EdgeInsets.only(top: 20),
-            ),
-            child: TextFormField(
-              controller: username,
-              decoration: InputDecoration(
-                contentPadding: EdgeInsets.all(20),
-                filled: true,
-                fillColor: const Color.fromRGBO(239, 239, 239, 0.5),
-                labelStyle: const TextStyle(
-                  fontWeight: FontWeight.w300,
-                  fontSize: 15,
-                  color: Color.fromRGBO(33, 33, 33, 0.5),
-                ),
-                labelText: 'First Name & Last Name',
-                border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Color.fromRGBO(239, 239, 239, 0.5),
-                  ),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 20).add(
-              EdgeInsets.only(top: 20),
-            ),
-            child: TextFormField(
-              validator: (value) {
-                if (value != null &&
-                    value.isNotEmpty &&
-                    EmailValidator.validate(value)) {
-                  return null;
-                } else {
-                  return "Please enter valid email.";
-                }
-              },
-              controller: email,
-              decoration: InputDecoration(
-                contentPadding: EdgeInsets.all(20),
-                filled: true,
-                fillColor: Color.fromRGBO(239, 239, 239, 0.5),
-                labelStyle: TextStyle(
-                  fontWeight: FontWeight.w300,
-                  fontSize: 15,
-                  color: Color.fromRGBO(33, 33, 33, 0.5),
-                ),
-                labelText: 'Enter Your Email',
-                border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Color.fromRGBO(239, 239, 239, 0.5),
-                  ),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 20).add(
-              EdgeInsets.only(top: 20),
-            ),
-            child: TextFormField(
-              controller: password,
-              validator: (value) {
-                if (value != null && value.trim().length >= 6) {
-                  return null;
-                } else {
-                  return "Please enter 6 characters at least.";
-                }
-              },
-              obscureText: hidePassword,
-              decoration: InputDecoration(
-                suffix: InkWell(
-                  onTap: () {
-                    setState(() {
-                      hidePassword = !hidePassword;
-                    });
-                  },
-                  child: Icon(
-                    hidePassword ? Icons.visibility : Icons.visibility_off,
-                  ),
-                ),
-                contentPadding: EdgeInsets.all(20),
-                filled: true,
-                fillColor: Color.fromRGBO(239, 239, 239, 0.5),
-                labelStyle: TextStyle(
-                  fontWeight: FontWeight.w300,
-                  fontSize: 15,
-                  color: Color.fromRGBO(33, 33, 33, 0.5),
-                ),
-                labelText: 'Enter your password',
-                border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Color.fromRGBO(239, 239, 239, 0.5),
-                  ),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-            ),
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 20).add(
-              EdgeInsets.only(top: 20),
-            ),
-            child: TextFormField(
-              validator: (value) {
-                if (value != null && value.trim().length >= 6) {
-                  return null;
-                } else {
-                  return "Password Doesn't match";
-                }
-              },
-              obscureText: hidePassword,
-              decoration: InputDecoration(
-                contentPadding: EdgeInsets.all(20),
-                filled: true,
-                fillColor: Color.fromRGBO(239, 239, 239, 0.5),
-                labelStyle: TextStyle(
-                  fontWeight: FontWeight.w300,
-                  fontSize: 15,
-                  color: Color.fromRGBO(33, 33, 33, 0.5),
-                ),
-                labelText: 'Repeat password',
-                border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Color.fromRGBO(239, 239, 239, 0.5),
-                  ),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-              ),
-            ),
-          ),
-          // This Container For Sign Up CheckBox
-          CheckBoxStyle(),
-
-          // Container for The OutlinedButton
-          Container(
-            width: MediaQuery.of(context).size.width,
-            margin: EdgeInsets.symmetric(horizontal: 20).add(
-              EdgeInsets.only(top: 15),
-            ),
-            child: OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                primary: Color.fromRGBO(90, 189, 140, 1),
-                side: BorderSide(
-                  color: Color.fromRGBO(90, 189, 140, 1),
-                  width: 1.0,
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                padding: EdgeInsets.all(20),
-              ),
-              //-----------
-              onPressed: () {
-                if (form.currentState!.validate()) {
-                  createAccount();
-                }
-              },
+      child: Form(
+        key: form,
+        child: Column(
+          children: [
+            //Start of Column
+            Container(
+              padding: EdgeInsets.only(left: 20),
+              alignment: Alignment.topLeft,
               child: Text(
                 'Sign Up',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                  color: Color.fromRGBO(90, 189, 140, 1),
+                style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
+              ),
+            ),
+            // Sign Up Details
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20).add(
+                EdgeInsets.only(top: 20),
+              ),
+              child: TextFormField(
+                controller: username,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.all(20),
+                  filled: true,
+                  fillColor: const Color.fromRGBO(239, 239, 239, 0.5),
+                  labelStyle: const TextStyle(
+                    fontWeight: FontWeight.w300,
+                    fontSize: 15,
+                    color: Color.fromRGBO(33, 33, 33, 0.5),
+                  ),
+                  labelText: 'First Name & Last Name',
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color.fromRGBO(239, 239, 239, 0.5),
+                    ),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 20).add(
+                EdgeInsets.only(top: 20),
+              ),
+              child: TextFormField(
+                validator: (value) {
+                  if (value != null &&
+                      value.isNotEmpty &&
+                      EmailValidator.validate(value)) {
+                    return null;
+                  } else {
+                    return "Please enter valid email.";
+                  }
+                },
+                controller: email,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.all(20),
+                  filled: true,
+                  fillColor: Color.fromRGBO(239, 239, 239, 0.5),
+                  labelStyle: TextStyle(
+                    fontWeight: FontWeight.w300,
+                    fontSize: 15,
+                    color: Color.fromRGBO(33, 33, 33, 0.5),
+                  ),
+                  labelText: 'Enter Your Email',
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color.fromRGBO(239, 239, 239, 0.5),
+                    ),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 20).add(
+                EdgeInsets.only(top: 20),
+              ),
+              child: TextFormField(
+                controller: password,
+                validator: (value) {
+                  if (value != null && value.trim().length >= 6) {
+                    return null;
+                  } else {
+                    return "Please enter 6 characters at least.";
+                  }
+                },
+                obscureText: hidePassword,
+                decoration: InputDecoration(
+                  suffix: InkWell(
+                    onTap: () {
+                      setState(() {
+                        hidePassword = !hidePassword;
+                      });
+                    },
+                    child: Icon(
+                      hidePassword ? Icons.visibility : Icons.visibility_off,
+                    ),
+                  ),
+                  contentPadding: const EdgeInsets.all(20),
+                  filled: true,
+                  fillColor: const Color.fromRGBO(239, 239, 239, 0.5),
+                  labelStyle: const TextStyle(
+                    fontWeight: FontWeight.w300,
+                    fontSize: 15,
+                    color: Color.fromRGBO(33, 33, 33, 0.5),
+                  ),
+                  labelText: 'Enter your password',
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(239, 239, 239, 0.5),
+                    ),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 20).add(
+                EdgeInsets.only(top: 20),
+              ),
+              child: TextFormField(
+                validator: (value) {
+                  if (value != null && value.trim().length >= 6) {
+                    return null;
+                  } else {
+                    return "Password Doesn't match";
+                  }
+                },
+                obscureText: hidePassword,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.all(20),
+                  filled: true,
+                  fillColor: const Color.fromRGBO(239, 239, 239, 0.5),
+                  labelStyle: const TextStyle(
+                    fontWeight: FontWeight.w300,
+                    fontSize: 15,
+                    color: Color.fromRGBO(33, 33, 33, 0.5),
+                  ),
+                  labelText: 'Repeat password',
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Color.fromRGBO(239, 239, 239, 0.5),
+                    ),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+              ),
+            ),
+            // This Container For Sign Up CheckBox
+            CheckBoxStyle(),
+
+            // Container for The OutlinedButton
+            Container(
+              width: MediaQuery.of(context).size.width,
+              margin: EdgeInsets.symmetric(horizontal: 20).add(
+                EdgeInsets.only(top: 15),
+              ),
+              child: OutlinedButton(
+                style: OutlinedButton.styleFrom(
+                  primary: const Color.fromRGBO(90, 189, 140, 1),
+                  side: const BorderSide(
+                    color: Color.fromRGBO(90, 189, 140, 1),
+                    width: 1.0,
+                  ),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  padding: EdgeInsets.all(20),
+                ),
+                //-----------
+                onPressed: () {
+                  if (form.currentState!.validate()) {
+                    createAccount();
+                    Navigator.of(context)
+                        .pushReplacementNamed(MainScreen.routeName);
+                  }
+                },
+                child: const Text(
+                  'Sign Up',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromRGBO(90, 189, 140, 1),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

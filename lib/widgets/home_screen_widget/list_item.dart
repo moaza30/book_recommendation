@@ -19,6 +19,7 @@ class ListItem extends StatelessWidget {
                   margin: EdgeInsets.symmetric(vertical: 5),
                   child: Text(
                     'The Catcher in the Rye',
+                    maxLines: 1,
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
                   ),
                 ),

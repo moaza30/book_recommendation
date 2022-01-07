@@ -49,4 +49,8 @@ class AuthProvider with ChangeNotifier {
       return "Error has occurred Please try again later";
     }
   }
+
+  void logut() {
+    FirebaseAuth.instance.signOut();
+  }
 }
