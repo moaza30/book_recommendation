@@ -31,12 +31,20 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
-        elevation: 0.0,
-        title: AppBarContent(),
-      ),
+      backgroundColor: Colors.white,
+      appBar: (currentScreenIndex == 3)
+          ? AppBar(
+              automaticallyImplyLeading: false,
+              backgroundColor: Colors.white,
+              elevation: 0.0,
+              title: Text(''),
+            )
+          : AppBar(
+              automaticallyImplyLeading: false,
+              backgroundColor: Colors.white,
+              elevation: 0.0,
+              title: AppBarContent(),
+            ),
       body: screens[currentScreenIndex],
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
@@ -50,9 +58,11 @@ class _MainScreenState extends State<MainScreen> {
             topRight: Radius.circular(30.0),
           ),
           child: BottomNavigationBar(
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
             currentIndex: currentScreenIndex,
             type: BottomNavigationBarType.fixed,
-            selectedItemColor: Color.fromRGBO(90, 189, 140, 1.0),
+            selectedItemColor: const Color.fromRGBO(90, 189, 140, 1.0),
             unselectedItemColor: Colors.black,
             onTap: (index) {
               currentScreenIndex = index;
@@ -62,39 +72,67 @@ class _MainScreenState extends State<MainScreen> {
             items: [
               BottomNavigationBarItem(
                 label: '',
-                icon: Container(
-                  padding: EdgeInsets.only(top: 13),
-                  child: ImageIcon(
-                    AssetImage('assets/icons/home_ico.png'),
-                  ),
-                ),
+                icon: (currentScreenIndex == 0)
+                    ? Container(
+                        //padding: const EdgeInsets.only(bottom: 1),
+                        child: ImageIcon(
+                          AssetImage('assets/icons/home-filled.png'),
+                        ),
+                      )
+                    : Container(
+                        padding: const EdgeInsets.only(bottom: 1),
+                        child: ImageIcon(
+                          AssetImage('assets/icons/home_ico.png'),
+                        ),
+                      ),
               ),
               BottomNavigationBarItem(
                 label: '',
-                icon: Container(
-                  padding: EdgeInsets.only(top: 13),
-                  child: ImageIcon(
-                    AssetImage('assets/icons/fav_ico.png'),
-                  ),
-                ),
+                icon: (currentScreenIndex == 1)
+                    ? Container(
+                        //padding: const EdgeInsets.only(bottom: 1),
+                        child: ImageIcon(
+                          AssetImage('assets/icons/fav-filled.png'),
+                        ),
+                      )
+                    : Container(
+                        padding: const EdgeInsets.only(top: 13),
+                        child: ImageIcon(
+                          AssetImage('assets/icons/fav_ico.png'),
+                        ),
+                      ),
               ),
               BottomNavigationBarItem(
                 label: '',
-                icon: Container(
-                  padding: EdgeInsets.only(top: 13),
-                  child: ImageIcon(
-                    AssetImage('assets/icons/category_ico.png'),
-                  ),
-                ),
+                icon: (currentScreenIndex == 2)
+                    ? Container(
+                        //padding: const EdgeInsets.only(bottom: 1),
+                        child: ImageIcon(
+                          AssetImage('assets/icons/categ-filled.png'),
+                        ),
+                      )
+                    : Container(
+                        padding: const EdgeInsets.only(top: 13),
+                        child: ImageIcon(
+                          AssetImage('assets/icons/category_ico.png'),
+                        ),
+                      ),
               ),
               BottomNavigationBarItem(
                 label: '',
-                icon: Container(
-                  padding: EdgeInsets.only(top: 13),
-                  child: ImageIcon(
-                    AssetImage('assets/icons/menu_ico.png'),
-                  ),
-                ),
+                icon: (currentScreenIndex == 3)
+                    ? Container(
+                        //padding: const EdgeInsets.only(bottom: 1),
+                        child: ImageIcon(
+                          AssetImage('assets/icons/menu-filled.png'),
+                        ),
+                      )
+                    : Container(
+                        padding: const EdgeInsets.only(top: 13),
+                        child: ImageIcon(
+                          AssetImage('assets/icons/menu_ico.png'),
+                        ),
+                      ),
               ),
             ],
           ),

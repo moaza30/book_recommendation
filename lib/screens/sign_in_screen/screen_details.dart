@@ -19,7 +19,7 @@ class _SignInBodyState extends State<SignInBody> {
   final GlobalKey<FormState> form = GlobalKey<FormState>();
   bool loggingIn = false, resettingPassword = false;
 
-  void login() async {
+  Future<void> login() async {
     setState(() {
       loggingIn = true;
     });
@@ -50,7 +50,7 @@ class _SignInBodyState extends State<SignInBody> {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(error)));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
         content: Text('Reset password email has been sent.'),
         backgroundColor: Colors.green,
       ));
@@ -68,15 +68,15 @@ class _SignInBodyState extends State<SignInBody> {
             Container(
               padding: EdgeInsets.only(left: 20),
               alignment: Alignment.topLeft,
-              child: Text(
+              child: const Text(
                 'Sign In',
                 style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
               ),
             ),
             // Sign Up Details
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 20).add(
-                EdgeInsets.only(top: 20),
+              margin: const EdgeInsets.symmetric(horizontal: 20).add(
+                const EdgeInsets.only(top: 20),
               ),
               child: TextFormField(
                 validator: (value) {
@@ -90,10 +90,10 @@ class _SignInBodyState extends State<SignInBody> {
                 },
                 controller: email,
                 decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(20),
+                  contentPadding: const EdgeInsets.all(20),
                   filled: true,
-                  fillColor: Color.fromRGBO(239, 239, 239, 0.5),
-                  labelStyle: TextStyle(
+                  fillColor: const Color.fromRGBO(239, 239, 239, 0.5),
+                  labelStyle: const TextStyle(
                     fontWeight: FontWeight.w300,
                     fontSize: 15,
                     color: Color.fromRGBO(33, 33, 33, 0.5),
@@ -104,7 +104,7 @@ class _SignInBodyState extends State<SignInBody> {
                     borderRadius: BorderRadius.circular(20),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Color.fromRGBO(239, 239, 239, 0.5),
                     ),
                     borderRadius: BorderRadius.circular(20),
@@ -113,7 +113,7 @@ class _SignInBodyState extends State<SignInBody> {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 20).add(
+              margin: const EdgeInsets.symmetric(horizontal: 20).add(
                 EdgeInsets.only(top: 20),
               ),
               child: TextFormField(
@@ -122,15 +122,15 @@ class _SignInBodyState extends State<SignInBody> {
                   if (value != null && value.length >= 6) {
                     return null;
                   } else {
-                    return "Please enter 6 characters at least.";
+                    return "Please enter correct password";
                   }
                 },
                 controller: password,
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.all(20),
                   filled: true,
-                  fillColor: Color.fromRGBO(239, 239, 239, 0.5),
-                  labelStyle: TextStyle(
+                  fillColor: const Color.fromRGBO(239, 239, 239, 0.5),
+                  labelStyle: const TextStyle(
                     fontWeight: FontWeight.w300,
                     fontSize: 15,
                     color: Color.fromRGBO(33, 33, 33, 0.5),
@@ -141,7 +141,7 @@ class _SignInBodyState extends State<SignInBody> {
                     borderRadius: BorderRadius.circular(20),
                   ),
                   focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
+                    borderSide: const BorderSide(
                       color: Color.fromRGBO(239, 239, 239, 0.5),
                     ),
                     borderRadius: BorderRadius.circular(20),
@@ -154,30 +154,30 @@ class _SignInBodyState extends State<SignInBody> {
             // Container for The OutlinedButton
             Container(
               width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.symmetric(horizontal: 20).add(
+              margin: const EdgeInsets.symmetric(horizontal: 20).add(
                 EdgeInsets.only(top: 15),
               ),
               child: OutlinedButton(
                 style: OutlinedButton.styleFrom(
-                  primary: Color.fromRGBO(90, 189, 140, 1),
-                  side: BorderSide(
+                  primary: const Color.fromRGBO(90, 189, 140, 1),
+                  side: const BorderSide(
                     color: Color.fromRGBO(90, 189, 140, 1),
                     width: 1.0,
                   ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                 ),
                 //-----------
-                onPressed: () {
+                onPressed: () async {
                   if (form.currentState!.validate()) {
-                    login();
+                    var check = await login();
                     Navigator.of(context)
                         .pushReplacementNamed(MainScreen.routeName);
                   }
                 },
-                child: Text(
+                child: const Text(
                   'Sign In',
                   style: TextStyle(
                     fontSize: 16,
@@ -189,7 +189,7 @@ class _SignInBodyState extends State<SignInBody> {
             ),
             TextButton(
               style: TextButton.styleFrom(
-                primary: Color.fromRGBO(90, 189, 140, 1),
+                primary: const Color.fromRGBO(90, 189, 140, 1),
               ),
               onPressed: () {
                 resetPassword();

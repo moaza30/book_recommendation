@@ -28,21 +28,22 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Book R',
       home: StreamBuilder(
-          stream: FirebaseAuth.instance.userChanges(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Scaffold(
-                body: Center(
-                  child: CircularProgressIndicator.adaptive(),
-                ),
-              );
-            }
-            if (snapshot.data == null) {
-              return StartScreen();
-            } else {
-              return MainScreen();
-            }
-          }),
+        stream: FirebaseAuth.instance.userChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Scaffold(
+              body: Center(
+                child: CircularProgressIndicator.adaptive(),
+              ),
+            );
+          }
+          if (snapshot.data != null) {
+            return MainScreen();
+          } else {
+            return StartScreen();
+          }
+        },
+      ),
       routes: {
         SignUpScreen.routename: (context) => SignUpScreen(),
         StartScreen.routename: (context) => StartScreen(),

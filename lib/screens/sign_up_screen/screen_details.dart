@@ -44,9 +44,9 @@ class _SignUpBodyState extends State<SignUpBody> {
           children: [
             //Start of Column
             Container(
-              padding: EdgeInsets.only(left: 20),
+              padding: const EdgeInsets.only(left: 20),
               alignment: Alignment.topLeft,
-              child: Text(
+              child: const Text(
                 'Sign Up',
                 style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
               ),
@@ -54,12 +54,19 @@ class _SignUpBodyState extends State<SignUpBody> {
             // Sign Up Details
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 20).add(
-                EdgeInsets.only(top: 20),
+                const EdgeInsets.only(top: 20),
               ),
               child: TextFormField(
                 controller: username,
+                validator: (value) {
+                  if (value != null && value.isNotEmpty) {
+                    return null;
+                  } else {
+                    return "Please enter your name";
+                  }
+                },
                 decoration: InputDecoration(
-                  contentPadding: EdgeInsets.all(20),
+                  contentPadding: const EdgeInsets.all(20),
                   filled: true,
                   fillColor: const Color.fromRGBO(239, 239, 239, 0.5),
                   labelStyle: const TextStyle(
