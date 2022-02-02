@@ -1,8 +1,8 @@
-import 'package:book_recommendation/screens/home_screen/app_bar_content.dart';
-import 'package:book_recommendation/widgets/category_screen_widget/category_screen.dart';
-import 'package:book_recommendation/widgets/favourite_screen_widget/favourite_screen.dart';
-import 'package:book_recommendation/widgets/home_screen_widget/home_screen.dart';
-import 'package:book_recommendation/widgets/menu_screen_widget/menu_screen.dart';
+import 'package:book_recommendation/views/screens/home_screen/app_bar_content.dart';
+import 'package:book_recommendation/views/widgets/category_screen_widget/category_screen.dart';
+import 'package:book_recommendation/views/widgets/favourite_screen_widget/favourite_screen.dart';
+import 'package:book_recommendation/views/widgets/home_screen_widget/home_screen.dart';
+import 'package:book_recommendation/views/widgets/menu_screen_widget/menu_screen.dart';
 import 'package:flutter/material.dart';
 
 class MainScreen extends StatefulWidget {
@@ -75,13 +75,12 @@ class _MainScreenState extends State<MainScreen> {
                 icon: (currentScreenIndex == 0)
                     ? Container(
                         //padding: const EdgeInsets.only(bottom: 1),
-                        child: ImageIcon(
+                        child: const ImageIcon(
                           AssetImage('assets/icons/home-filled.png'),
                         ),
                       )
                     : Container(
-                        padding: const EdgeInsets.only(bottom: 1),
-                        child: ImageIcon(
+                        child: const ImageIcon(
                           AssetImage('assets/icons/home_ico.png'),
                         ),
                       ),
@@ -90,14 +89,12 @@ class _MainScreenState extends State<MainScreen> {
                 label: '',
                 icon: (currentScreenIndex == 1)
                     ? Container(
-                        //padding: const EdgeInsets.only(bottom: 1),
-                        child: ImageIcon(
+                        child: const ImageIcon(
                           AssetImage('assets/icons/fav-filled.png'),
                         ),
                       )
                     : Container(
-                        padding: const EdgeInsets.only(top: 13),
-                        child: ImageIcon(
+                        child: const ImageIcon(
                           AssetImage('assets/icons/fav_ico.png'),
                         ),
                       ),
@@ -107,13 +104,12 @@ class _MainScreenState extends State<MainScreen> {
                 icon: (currentScreenIndex == 2)
                     ? Container(
                         //padding: const EdgeInsets.only(bottom: 1),
-                        child: ImageIcon(
+                        child: const ImageIcon(
                           AssetImage('assets/icons/categ-filled.png'),
                         ),
                       )
                     : Container(
-                        padding: const EdgeInsets.only(top: 13),
-                        child: ImageIcon(
+                        child: const ImageIcon(
                           AssetImage('assets/icons/category_ico.png'),
                         ),
                       ),
@@ -123,13 +119,12 @@ class _MainScreenState extends State<MainScreen> {
                 icon: (currentScreenIndex == 3)
                     ? Container(
                         //padding: const EdgeInsets.only(bottom: 1),
-                        child: ImageIcon(
+                        child: const ImageIcon(
                           AssetImage('assets/icons/menu-filled.png'),
                         ),
                       )
                     : Container(
-                        padding: const EdgeInsets.only(top: 13),
-                        child: ImageIcon(
+                        child: const ImageIcon(
                           AssetImage('assets/icons/menu_ico.png'),
                         ),
                       ),

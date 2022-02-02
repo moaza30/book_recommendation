@@ -1,5 +1,5 @@
 import 'package:book_recommendation/controllers/auth_provider.dart';
-import 'package:book_recommendation/screens/start_screen/start_screen.dart';
+import 'package:book_recommendation/views/screens/start_screen/start_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +14,6 @@ class MenuScreen extends StatelessWidget {
           ElevatedButton(
             onPressed: () {
               Provider.of<AuthProvider>(context, listen: false).logut();
-              Navigator.of(context).pushReplacementNamed(StartScreen.routename);
             },
             child: const Text("Sign out"),
           ),
