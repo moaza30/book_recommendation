@@ -9,9 +9,8 @@ class BooksProvider with ChangeNotifier {
   String baseUrl = 'https://www.googleapis.com/books/v1';
   List<Books> books = [];
 
-  Future<List<Books>> getBooks() async {
+  Future<void> getBooks() async {
     Uri link = Uri.parse('$baseUrl/volumes?q=flutter');
-
     http.Response response = await http.get(link);
     final jsonData = jsonDecode(response.body)['items'];
     List<Books> bookList = [];
@@ -19,8 +18,8 @@ class BooksProvider with ChangeNotifier {
       bookList.add(Books.fromJson(item));
     }
     books.addAll(bookList);
-    print(bookList);
-    return books;
+    print(books);
+    notifyListeners();
   }
 
   // Future<Books> getBooksDetails() async {}
