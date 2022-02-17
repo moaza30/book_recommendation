@@ -15,7 +15,7 @@ class StartScreenStyle extends StatelessWidget {
             margin:
                 EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.20),
             child: const Text(
-              'Books For \n    Every Taste',
+              'Books For\n  Every Taste',
               style: TextStyle(
                 fontWeight: FontWeight.w400,
                 fontSize: 36,
