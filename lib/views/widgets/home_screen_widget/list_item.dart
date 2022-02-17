@@ -2,10 +2,9 @@ import 'package:book_recommendation/models/books.dart';
 import 'package:flutter/material.dart';
 
 class ListItem extends StatelessWidget {
-  late Books books;
+  Books books = Books();
   @override
   Widget build(BuildContext context) {
-    books = ModalRoute.of(context)!.settings.arguments as Books;
     return Container(
       height: MediaQuery.of(context).size.height * 0.30,
       child: ListView.builder(
@@ -17,10 +16,10 @@ class ListItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                //Image.network(books.thumbnail),
+                // Image.network(),
                 Container(
                   width: 130,
-                  margin: EdgeInsets.symmetric(vertical: 5),
+                  margin: const EdgeInsets.symmetric(vertical: 5),
                   child: Text(
                     books.title!,
                     maxLines: 1,
@@ -32,6 +31,9 @@ class ListItem extends StatelessWidget {
                 ),
                 Text(
                   books.authors!,
+                  maxLines: 2,
+                  softWrap: false,
+                  overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w600,

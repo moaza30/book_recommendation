@@ -1,38 +1,25 @@
 import 'dart:convert';
-
 import 'package:book_recommendation/models/books.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
 
 class HomeProvider with ChangeNotifier {
   List<Books> books = [];
-  int page = 0;
-  bool isLoading = true;
-  String? query = "flutter";
+  String baseUrl = 'https://www.googleapis.com/books/v1';
 
-  Future<void> getBooks() async {
-    try {
-      final response = await http.get(Uri.parse(
-          "https://www.googleapis.com/books/v1/volumes?q=$query&startIndex=$page&maxResults=40"));
+  Future<List<Books>> getBooks() async {
+    Uri link = Uri.parse('$baseUrl/volumes?q=flutter');
 
-      //print("response.body ${response.body}");
-      final items = jsonDecode(response.body)['items'];
-      List<Books> bookList = [];
-      for (var item in items) {
-        bookList.add(Books.fromJson(item));
-      }
-
-      books.addAll(bookList);
-      page += 40;
-      isLoading = false;
-      notifyListeners();
-    } catch (e) {
-      print("error get books $e");
+    http.Response response = await http.get(link);
+    final jsonData = jsonDecode(response.body)['items'];
+    List<Books> bookList = [];
+    for (var item in jsonData) {
+      bookList.add(Books.fromJson(item));
     }
-  }
-
-  void showLoading() {
-    isLoading = true;
-    notifyListeners();
+    books.addAll(bookList);
+    print(bookList);
+    return books;
   }
 }
