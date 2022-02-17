@@ -2,6 +2,7 @@ import 'package:book_recommendation/controllers/books_provider.dart';
 import 'package:book_recommendation/views/widgets/home_screen_widget/list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:book_recommendation/models/books.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   @override
@@ -24,10 +25,7 @@ class HomeScreen extends StatelessWidget {
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                   TextButton(
-                    onPressed: () {
-                      HomeProvider test = HomeProvider();
-                      test.getBooks();
-                    },
+                    onPressed: () {},
                     child: const Text(
                       'See All',
                       style: TextStyle(
@@ -38,7 +36,41 @@ class HomeScreen extends StatelessWidget {
                 ],
               ),
             ),
-            ListItem(),
+            Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height * 0.25,
+                color: Colors.red,
+                child: FutureBuilder<List<Books>?>(
+                  future: Provider.of<BooksProvider>(context).books,
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return const Center(
+                        child: CircularProgressIndicator.adaptive(),
+                      );
+                    }
+                    if (snapshot.data == null) {
+                      return const Center(
+                        child: Text('Try Again later'),
+                      );
+                    } else {
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.horizontal,
+                        itemCount:
+                            Provider.of<BooksProvider>(context).books.length,
+                        itemBuilder: (context, index) {
+                          final book =
+                              Provider.of<BooksProvider>(context).books[0];
+                          return ListItem(
+                            book.title,
+                            book.authors,
+                            book.thumbnail,
+                          );
+                        },
+                      );
+                    }
+                  },
+                )),
             Container(
               margin: const EdgeInsets.only(bottom: 10),
               child: Row(

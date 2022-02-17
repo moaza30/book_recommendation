@@ -1,3 +1,4 @@
+import 'package:book_recommendation/controllers/books_provider.dart';
 import 'package:book_recommendation/views/screens/home_screen/main_screen.dart';
 import 'package:book_recommendation/views/screens/sign_in_screen/sign_in_screnn.dart';
 import 'package:book_recommendation/views/screens/sign_up_screen/sign_up_screen.dart';
@@ -11,12 +12,13 @@ import 'controllers/auth_provider.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(
-    ChangeNotifierProvider(
-      create: (context) => AuthProvider(),
-      child: const MyApp(),
-    ),
-  );
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context) => AuthProvider()),
+      ChangeNotifierProvider(create: (context) => BooksProvider()),
+    ],
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

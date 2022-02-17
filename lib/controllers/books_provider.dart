@@ -5,9 +5,9 @@ import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart';
 
-class HomeProvider with ChangeNotifier {
-  List<Books> books = [];
+class BooksProvider with ChangeNotifier {
   String baseUrl = 'https://www.googleapis.com/books/v1';
+  List<Books> books = [];
 
   Future<List<Books>> getBooks() async {
     Uri link = Uri.parse('$baseUrl/volumes?q=flutter');
@@ -22,4 +22,6 @@ class HomeProvider with ChangeNotifier {
     print(bookList);
     return books;
   }
+
+  // Future<Books> getBooksDetails() async {}
 }
