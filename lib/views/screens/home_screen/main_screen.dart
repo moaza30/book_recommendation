@@ -1,9 +1,12 @@
+import 'package:book_recommendation/controllers/books_provider.dart';
 import 'package:book_recommendation/views/screens/home_screen/app_bar_content.dart';
 import 'package:book_recommendation/views/widgets/category_screen_widget/category_screen.dart';
 import 'package:book_recommendation/views/widgets/favourite_screen_widget/favourite_screen.dart';
 import 'package:book_recommendation/views/widgets/home_screen_widget/home_screen.dart';
 import 'package:book_recommendation/views/widgets/menu_screen_widget/menu_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class MainScreen extends StatefulWidget {
   static const String routeName = "HomeScreen";
@@ -14,6 +17,18 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   late int currentScreenIndex;
+
+  RefreshController _refreshController =
+      RefreshController(initialRefresh: false);
+
+  void _onRefresh() async {
+    // monitor network fetch
+    await Future.delayed(Duration(milliseconds: 1000));
+    // if failed,use refreshFailed()
+    _refreshController.refreshCompleted();
+    Provider.of<BooksProvider>(context, listen: false).getBooks();
+  }
+
   //************************
   List screens = [
     HomeScreen(),
@@ -45,7 +60,12 @@ class _MainScreenState extends State<MainScreen> {
               elevation: 0.0,
               title: AppBarContent(),
             ),
-      body: screens[currentScreenIndex],
+      body: SmartRefresher(
+        enablePullDown: true,
+        controller: _refreshController,
+        onRefresh: _onRefresh,
+        child: screens[currentScreenIndex],
+      ),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
           boxShadow: [

@@ -7,7 +7,7 @@ class StartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         image: DecorationImage(
           image: AssetImage('assets/images/test.png'),
           fit: BoxFit.fill,
