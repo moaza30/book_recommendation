@@ -6,13 +6,23 @@ class ListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.33,
+      width: MediaQuery.of(context).size.width * 0.32,
       margin: const EdgeInsets.only(right: 5, left: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
             height: MediaQuery.of(context).size.height * 0.23,
+            decoration: const BoxDecoration(
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.black12,
+                  spreadRadius: 2,
+                  blurRadius: 5,
+                  offset: Offset(0, 6),
+                ),
+              ],
+            ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(7),
               child: Image.network(
@@ -24,7 +34,7 @@ class ListItem extends StatelessWidget {
           ),
           Container(
             width: MediaQuery.of(context).size.width,
-            margin: const EdgeInsets.only(top: 15, bottom: 5),
+            margin: const EdgeInsets.only(top: 17, bottom: 5),
             child: Text(
               title ?? '',
               maxLines: 1,

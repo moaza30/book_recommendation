@@ -10,7 +10,7 @@ class AppBarContent extends StatelessWidget {
           width: MediaQuery.of(context).size.width * 0.75,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: Colors.black12,
                 spreadRadius: 2,
@@ -26,7 +26,7 @@ class AppBarContent extends StatelessWidget {
               filled: true,
               fillColor: Colors.white,
               hintText: 'Search for books here..',
-              hintStyle: TextStyle(
+              hintStyle: const TextStyle(
                 fontSize: 13,
                 color: Color.fromRGBO(33, 33, 33, 0.5),
               ),
@@ -34,7 +34,7 @@ class AppBarContent extends StatelessWidget {
                 borderSide: BorderSide.none,
                 borderRadius: BorderRadius.circular(10),
               ),
-              suffixIcon: Icon(
+              suffixIcon: const Icon(
                 Icons.search,
                 size: 28.0,
                 color: Colors.black,
