@@ -21,6 +21,14 @@ class _MainScreenState extends State<MainScreen> {
   RefreshController _refreshController =
       RefreshController(initialRefresh: false);
 
+  //************************
+  List screens = [
+    HomeScreen(),
+    FavouriteScreen(),
+    CategoryScreen(),
+    MenuScreen(),
+  ];
+// This Function for pull up to refresh
   void _onRefresh() async {
     // monitor network fetch
     await Future.delayed(Duration(milliseconds: 1000));
@@ -29,13 +37,6 @@ class _MainScreenState extends State<MainScreen> {
     Provider.of<BooksProvider>(context, listen: false).getBooks();
   }
 
-  //************************
-  List screens = [
-    HomeScreen(),
-    FavouriteScreen(),
-    CategoryScreen(),
-    MenuScreen(),
-  ];
   // function for select widget
   @override
   void initState() {
