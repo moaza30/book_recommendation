@@ -15,7 +15,7 @@ class BookList extends StatelessWidget {
       },
       child: Container(
         width: MediaQuery.of(context).size.width * 0.35,
-        margin: const EdgeInsets.only(right: 0, left: 10),
+        margin: const EdgeInsets.only(right: 10, left: 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
