@@ -8,7 +8,7 @@ class ListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(right: 10, left: 5),
+      margin: const EdgeInsets.only(left: 10),
       child: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
