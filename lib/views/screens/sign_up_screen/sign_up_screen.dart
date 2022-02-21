@@ -16,17 +16,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
         elevation: 0.0,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.of(context).pushNamed(StartScreen.routename);
-          },
-          icon: Icon(
-            Icons.arrow_back,
-            color: Color.fromRGBO(90, 189, 140, 1),
-          ),
+        iconTheme: const IconThemeData(
+          color: Color.fromRGBO(90, 189, 140, 1), //change your color here
         ),
       ),
       body: SignUpBody(),

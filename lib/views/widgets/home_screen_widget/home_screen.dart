@@ -1,10 +1,19 @@
 import 'package:book_recommendation/controllers/books_provider.dart';
+import 'package:book_recommendation/models/books_api_manager.dart';
+import 'package:book_recommendation/views/screens/book_details/book_details_screen.dart';
 import 'package:book_recommendation/views/widgets/home_screen_widget/list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  late Books book;
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -39,9 +48,26 @@ class HomeScreen extends StatelessWidget {
             Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 0.30,
-              child: (Provider.of<BooksProvider>(context).books.isEmpty)
-                  ? const Center(child: CircularProgressIndicator.adaptive())
-                  : ListView.builder(
+              child: FutureBuilder<List<Books>?>(
+                future: Provider.of<BooksProvider>(context, listen: false)
+                    .getBooks(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(
+                        child: CircularProgressIndicator.adaptive());
+                  }
+                  if (snapshot.data == null) {
+                    return const Center(
+                      child: Text(
+                        'Error has occured , Please try again later.',
+                        style: TextStyle(
+                          color: Color.fromRGBO(90, 189, 140, 1),
+                        ),
+                      ),
+                    );
+                  } else {
+                    return ListItem(snapshot.data!);
+                    /* ListView.builder(
                       shrinkWrap: true,
                       scrollDirection: Axis.horizontal,
                       itemCount: 10,
@@ -54,7 +80,10 @@ class HomeScreen extends StatelessWidget {
                           book.thumbnail,
                         );
                       },
-                    ),
+                    ),*/
+                  }
+                },
+              ),
             ),
             Container(
               margin: const EdgeInsets.only(bottom: 10, left: 10),

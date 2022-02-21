@@ -73,7 +73,7 @@ class _SignInBodyState extends State<SignInBody> {
                 children: [
                   //Start of Column
                   Container(
-                    padding: EdgeInsets.only(left: 20),
+                    padding: const EdgeInsets.only(left: 20),
                     alignment: Alignment.topLeft,
                     child: const Text(
                       'Sign In',
@@ -122,7 +122,7 @@ class _SignInBodyState extends State<SignInBody> {
                   ),
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 20).add(
-                      EdgeInsets.only(top: 20),
+                      const EdgeInsets.only(top: 20),
                     ),
                     child: TextFormField(
                       obscureText: true,
@@ -135,7 +135,7 @@ class _SignInBodyState extends State<SignInBody> {
                       },
                       controller: password,
                       decoration: InputDecoration(
-                        contentPadding: EdgeInsets.all(20),
+                        contentPadding: const EdgeInsets.all(20),
                         filled: true,
                         fillColor: const Color.fromRGBO(239, 239, 239, 0.5),
                         labelStyle: const TextStyle(
@@ -163,7 +163,7 @@ class _SignInBodyState extends State<SignInBody> {
                   Container(
                     width: MediaQuery.of(context).size.width,
                     margin: const EdgeInsets.symmetric(horizontal: 20).add(
-                      EdgeInsets.only(top: 15),
+                      const EdgeInsets.only(top: 15),
                     ),
                     child: OutlinedButton(
                       style: OutlinedButton.styleFrom(

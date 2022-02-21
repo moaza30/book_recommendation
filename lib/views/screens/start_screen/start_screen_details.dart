@@ -50,7 +50,7 @@ class StartScreenStyle extends StatelessWidget {
           //Container For Sign Uo Button
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 20).add(
-              EdgeInsets.only(top: 20),
+              const EdgeInsets.only(top: 20),
             ),
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(

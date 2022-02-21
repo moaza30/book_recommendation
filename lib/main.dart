@@ -1,4 +1,5 @@
 import 'package:book_recommendation/controllers/books_provider.dart';
+import 'package:book_recommendation/views/screens/book_details/book_details_screen.dart';
 import 'package:book_recommendation/views/screens/home_screen/main_screen.dart';
 import 'package:book_recommendation/views/screens/sign_in_screen/sign_in_screnn.dart';
 import 'package:book_recommendation/views/screens/sign_up_screen/sign_up_screen.dart';
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
         StartScreen.routename: (context) => StartScreen(),
         SignInScreen.routename: (context) => SignInScreen(),
         MainScreen.routeName: (context) => MainScreen(),
+        BooksDetails.routename: (context) => BooksDetails(),
       },
     );
   }
