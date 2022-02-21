@@ -10,7 +10,7 @@ class Test extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 10),
+      margin: const EdgeInsets.only(left: 15),
       child: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,

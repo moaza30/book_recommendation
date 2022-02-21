@@ -61,13 +61,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   );
                 } else {
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: 10,
-                    itemBuilder: (context, index) {
-                      return BookList(snapshot.data![index]);
-                    },
+                  return Container(
+                    margin: const EdgeInsets.only(left: 10),
+                    child: ListView.builder(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 10,
+                      itemBuilder: (context, index) {
+                        return BookList(snapshot.data![index]);
+                      },
+                    ),
                   );
                 }
               },
