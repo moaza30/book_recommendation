@@ -1,5 +1,5 @@
 import 'package:book_recommendation/controllers/books_provider.dart';
-import 'package:book_recommendation/models/books_api_manager.dart';
+import 'package:book_recommendation/models/books_model.dart';
 import 'package:book_recommendation/views/screens/book_details/book_details_screen.dart';
 import 'package:book_recommendation/views/widgets/home_screen_widget/list_item.dart';
 import 'package:book_recommendation/views/widgets/home_screen_widget/book_list.dart';

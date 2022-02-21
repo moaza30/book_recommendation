@@ -1,26 +1,18 @@
-class Books {
-  String? thumbnail, id, webRead;
-  String? title, publishedDate;
-  String? authors, description;
+import 'dart:convert';
 
-  Books(
-      {this.id,
-      this.authors,
-      this.title,
-      this.thumbnail,
-      this.description,
-      this.publishedDate,
-      this.webRead});
+import 'package:book_recommendation/models/books_model.dart';
 
-  factory Books.fromJson(Map<String, dynamic> data) {
-    return Books(
-      id: data['id'],
-      title: data["volumeInfo"]["title"],
-      authors: data["volumeInfo"]["authors"][0],
-      thumbnail: data["volumeInfo"]["imageLinks"]["thumbnail"],
-      description: data['volumeInfo']['description'],
-      publishedDate: data['volumeInfo']['publishedDate'],
-      webRead: data['volumeInfo']['webReaderLink'],
-    );
+import 'package:http/http.dart' as http;
+
+class BooksApiManager {
+  String baseUrl = 'https://www.googleapis.com/books/v1';
+
+  Future<List<Books>?> getBooks() async {
+    Uri link = Uri.parse('$baseUrl/volumes?q=flutter');
+    /* final response = await http.get(Uri.parse(
+        "https://www.googleapis.com/books/v1/volumes?q=$query&startIndex=$page&maxResults=40")); */
+    http.Response response = await http.get(link);
+    final jsonData = jsonDecode(response.body)['items'];
+    return jsonData;
   }
 }

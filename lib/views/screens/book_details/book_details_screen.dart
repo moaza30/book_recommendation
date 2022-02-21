@@ -1,5 +1,7 @@
-import 'package:book_recommendation/models/books_api_manager.dart';
+import 'package:book_recommendation/models/books_model.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:readmore/readmore.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class BooksDetails extends StatelessWidget {
@@ -86,11 +88,15 @@ class BooksDetails extends StatelessWidget {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 15).add(
-                      const EdgeInsets.only(right: 20),
+                      const EdgeInsets.only(right: 10),
                     ),
-                    child: Text(
+                    child: ReadMoreText(
                       books.description!,
-                      maxLines: 5,
+                      trimLines: 3,
+                      trimMode: TrimMode.Line,
+                      trimCollapsedText: 'Read more',
+                      trimExpandedText: 'Read less',
+                      colorClickableText: Color.fromRGBO(90, 189, 140, 1),
                       style: const TextStyle(
                           fontSize: 16, color: Color(0xFF6D727A)),
                     ),
