@@ -1,5 +1,5 @@
 class Books {
-  String? thumbnail, id;
+  String? thumbnail, id, webRead;
   String? title, publishedDate;
   String? authors, description;
 
@@ -9,7 +9,8 @@ class Books {
       this.title,
       this.thumbnail,
       this.description,
-      this.publishedDate});
+      this.publishedDate,
+      this.webRead});
 
   factory Books.fromJson(Map<String, dynamic> data) {
     return Books(
@@ -19,6 +20,7 @@ class Books {
       thumbnail: data["volumeInfo"]["imageLinks"]["thumbnail"],
       description: data['volumeInfo']['description'],
       publishedDate: data['volumeInfo']['publishedDate'],
+      webRead: data['volumeInfo']['webReaderLink'],
     );
   }
 }

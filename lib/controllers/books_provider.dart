@@ -20,8 +20,8 @@ class BooksProvider with ChangeNotifier {
         bookList.add(Books.fromJson(item));
       }
       books.addAll(bookList);
-      return books;
       //ChangeNotifier();
+      return books;
     } catch (error) {
       print(error);
     }

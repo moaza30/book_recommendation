@@ -1,18 +1,14 @@
-import 'package:book_recommendation/controllers/books_provider.dart';
 import 'package:book_recommendation/models/books_api_manager.dart';
-import 'package:book_recommendation/views/widgets/home_screen_widget/home_screen.dart';
-import 'package:book_recommendation/views/widgets/home_screen_widget/list_item.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BooksDetails extends StatelessWidget {
   static const String routename = 'BooksDetails';
-// late Books books;
+  late Books books;
 
   @override
   Widget build(BuildContext context) {
-    //  books = ModalRoute.of(context)!.settings.arguments as Books;
+    books = ModalRoute.of(context)!.settings.arguments as Books;
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -32,19 +28,22 @@ class BooksDetails extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(top: 25, bottom: 10),
-              child: Image.asset(
-                'assets/images/Rectangle 307.png',
+              child: Image.network(
+                books.thumbnail!,
+                height: 250,
+                width: 180,
+                fit: BoxFit.cover,
               ),
             ),
             Text(
-              'ssss',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              books.title!,
+              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 5),
               child: Text(
-                'Published: 2020-08-04',
-                style: TextStyle(color: Color(0xFFACB1B6), fontSize: 15),
+                'Published: ${books.publishedDate}',
+                style: const TextStyle(color: Color(0xFFACB1B6), fontSize: 15),
               ),
             ),
             Row(
@@ -90,8 +89,10 @@ class BooksDetails extends StatelessWidget {
                       const EdgeInsets.only(right: 20),
                     ),
                     child: Text(
-                      'iousyhdiysaytdyiashoudhuiyasgtdyugfsayudgyuasgyufdasdukolashduiasgyudauksihduyiasuytdg',
-                      style: TextStyle(fontSize: 16, color: Color(0xFF6D727A)),
+                      books.description!,
+                      maxLines: 5,
+                      style: const TextStyle(
+                          fontSize: 16, color: Color(0xFF6D727A)),
                     ),
                   ),
                   const Padding(
@@ -103,8 +104,9 @@ class BooksDetails extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    "Paulo Coelho",
-                    style: TextStyle(fontSize: 16, color: Color(0xFF6D727A)),
+                    books.authors!,
+                    style:
+                        const TextStyle(fontSize: 16, color: Color(0xFF6D727A)),
                   ),
                   const Padding(
                     padding: EdgeInsets.symmetric(vertical: 20),
