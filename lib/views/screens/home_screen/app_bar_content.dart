@@ -1,6 +1,11 @@
+import 'package:book_recommendation/models/books_model.dart';
+import 'package:book_recommendation/services/search_services.dart';
+import 'package:book_recommendation/views/screens/search_result/search_result.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AppBarContent extends StatelessWidget {
+  String? bookName;
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -19,9 +24,15 @@ class AppBarContent extends StatelessWidget {
               ),
             ],
           ),
-          margin: EdgeInsets.only(right: 10),
+          margin: const EdgeInsets.only(right: 10),
           height: 35,
           child: TextField(
+            onSubmitted: (data) async {
+              bookName = data;
+              print(bookName);
+              Navigator.of(context)
+                  .pushNamed(SearchResult.routename, arguments: bookName);
+            },
             decoration: InputDecoration(
               filled: true,
               fillColor: Colors.white,

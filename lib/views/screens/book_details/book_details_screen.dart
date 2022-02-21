@@ -37,9 +37,14 @@ class BooksDetails extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            Text(
-              books.title!,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: Text(
+                books.title!,
+                textAlign: TextAlign.center,
+                style:
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 5),

@@ -1,6 +1,8 @@
 import 'package:book_recommendation/controllers/books_provider.dart';
+import 'package:book_recommendation/services/search_services.dart';
 import 'package:book_recommendation/views/screens/book_details/book_details_screen.dart';
 import 'package:book_recommendation/views/screens/home_screen/main_screen.dart';
+import 'package:book_recommendation/views/screens/search_result/search_result.dart';
 import 'package:book_recommendation/views/screens/sign_in_screen/sign_in_screnn.dart';
 import 'package:book_recommendation/views/screens/sign_up_screen/sign_up_screen.dart';
 import 'package:book_recommendation/views/screens/start_screen/start_screen.dart';
@@ -25,6 +27,7 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (context) => AuthProvider()),
         ChangeNotifierProvider(create: (context) => BooksProvider()),
+        ChangeNotifierProvider(create: (context) => SearchServices()),
       ],
       child: const MyApp(),
     ),
@@ -62,6 +65,7 @@ class MyApp extends StatelessWidget {
         SignInScreen.routename: (context) => SignInScreen(),
         MainScreen.routeName: (context) => MainScreen(),
         BooksDetails.routename: (context) => BooksDetails(),
+        SearchResult.routename: (context) => SearchResult(),
       },
     );
   }

@@ -21,7 +21,7 @@ class BookList extends StatelessWidget {
           children: [
             Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.23,
+              height: MediaQuery.of(context).size.height * 0.22,
               decoration: const BoxDecoration(
                 boxShadow: [
                   BoxShadow(
@@ -41,7 +41,7 @@ class BookList extends StatelessWidget {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(top: 17, bottom: 5),
+              margin: const EdgeInsets.only(top: 10, bottom: 5),
               child: Text(
                 books.title!,
                 maxLines: 1,

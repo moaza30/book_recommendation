@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 const Text(
                   'For You',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 TextButton(
                   onPressed: () {},
@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
               children: [
                 const Text(
                   'Popular',
-                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 TextButton(
                   onPressed: () {},
