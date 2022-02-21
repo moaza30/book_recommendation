@@ -17,98 +17,91 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        padding: const EdgeInsets.only(left: 7),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              margin: const EdgeInsets.only(bottom: 10, left: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'For You',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'See All',
-                      style: TextStyle(
-                        color: Color.fromRGBO(90, 189, 140, 1),
-                      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            margin: const EdgeInsets.only(bottom: 10, left: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'For You',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: const Text(
+                    'See All',
+                    style: TextStyle(
+                      color: Color.fromRGBO(90, 189, 140, 1),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.30,
-              child: FutureBuilder<List<Books>?>(
-                future: Provider.of<BooksProvider>(context, listen: false)
-                    .getBooks(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(
-                        child: CircularProgressIndicator.adaptive());
-                  }
-                  if (snapshot.data == null) {
-                    return const Center(
-                      child: Text(
-                        'Error has occured , Please try again later.',
-                        style: TextStyle(
-                          color: Color.fromRGBO(90, 189, 140, 1),
-                        ),
-                      ),
-                    );
-                  } else {
-                    return ListItem(snapshot.data!);
-                    /* ListView.builder(
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      itemCount: 10,
-                      itemBuilder: (context, index) {
-                        final book =
-                            Provider.of<BooksProvider>(context).books[index];
-                        return ListItem(
-                          book.title,
-                          book.authors,
-                          book.thumbnail,
-                        );
-                      },
-                    ),*/
-                  }
-                },
-              ),
+          ),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height * 0.30,
+            child: FutureBuilder<List<Books>?>(
+              future:
+                  Provider.of<BooksProvider>(context, listen: false).getBooks(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(
+                      child: CircularProgressIndicator.adaptive());
+                }
+                if (snapshot.data == null) {
+                  return const Center(
+                    child: Text(
+                      'Error has occured , Please try again later.',
+                      style: TextStyle(color: Color.fromRGBO(90, 189, 140, 1)),
+                    ),
+                  );
+                } else {
+                  return ListItem(snapshot.data!);
+                  /* ListView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemCount: 10,
+                    itemBuilder: (context, index) {
+                      final book =
+                          Provider.of<BooksProvider>(context).books[index];
+                      return ListItem(
+                        book.title,
+                        book.authors,
+                        book.thumbnail,
+                      );
+                    },
+                  ),*/
+                }
+              },
             ),
-            Container(
-              margin: const EdgeInsets.only(bottom: 10, left: 10),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    'Popular',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'See All',
-                      style: TextStyle(
-                        color: Color.fromRGBO(90, 189, 140, 1),
-                      ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(bottom: 10, left: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Popular',
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                TextButton(
+                  onPressed: () {},
+                  child: const Text(
+                    'See All',
+                    style: TextStyle(
+                      color: Color.fromRGBO(90, 189, 140, 1),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            //  ListItem(),
-          ],
-        ),
+          ),
+          //  ListItem(),
+        ],
       ),
     );
   }

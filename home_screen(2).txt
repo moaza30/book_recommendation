@@ -1,0 +1,83 @@
+FutureBuilder<List<Books>?>(
+      future: Provider.of<BooksProvider>(context, listen: false).getBooks(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Center(
+            child: CircularProgressIndicator.adaptive(),
+          );
+        }
+        if (snapshot.data == null) {
+          return Center(
+            child: Text('Error has occured , Please try again later'),
+          );
+        } else {
+          return SingleChildScrollView(
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              padding: const EdgeInsets.only(left: 7),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 10, left: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          'For You',
+                          style: TextStyle(
+                              fontSize: 24, fontWeight: FontWeight.bold),
+                        ),
+                        TextButton(
+                          onPressed: () {},
+                          child: const Text(
+                            'See All',
+                            style: TextStyle(
+                              color: Color.fromRGBO(90, 189, 140, 1),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height * 0.30,
+                    child: ListItem(snapshot.data!),
+                  ),
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 10, left: 10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          'Popular',
+                          style: TextStyle(
+                              fontSize: 24, fontWeight: FontWeight.bold),
+                        ),
+                        TextButton(
+                          onPressed: () {},
+                          child: const Text(
+                            'See All',
+                            style: TextStyle(
+                              color: Color.fromRGBO(90, 189, 140, 1),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  //  ListItem(),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height * 0.30,
+                    child: ListItem(snapshot.data!),
+                  ),
+                ],
+              ),
+            ),
+          );
+        }
+      },
+    );

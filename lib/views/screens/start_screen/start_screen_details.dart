@@ -79,7 +79,7 @@ class StartScreenStyle extends StatelessWidget {
               child: TextButton(
                 onPressed: () {
                   Navigator.of(context).pushNamed(MainScreen.routeName);
-                  Provider.of<BooksProvider>(context, listen: false).getBooks();
+                  // Provider.of<BooksProvider>(context, listen: false).getBooks();
                 },
                 child: const Text(
                   'Skip ',
