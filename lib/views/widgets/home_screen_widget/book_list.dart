@@ -15,7 +15,7 @@ class BookList extends StatelessWidget {
       },
       child: Container(
         width: MediaQuery.of(context).size.width * 0.35,
-        margin: const EdgeInsets.only(right: 15),
+        margin: const EdgeInsets.only(right: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -48,7 +48,7 @@ class BookList extends StatelessWidget {
                 softWrap: false,
                 overflow: TextOverflow.fade,
                 style:
-                    const TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
+                    const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
               ),
             ),
             Text(
@@ -58,7 +58,7 @@ class BookList extends StatelessWidget {
               overflow: TextOverflow.fade,
               style: const TextStyle(
                 fontSize: 12,
-                fontWeight: FontWeight.w600,
+                fontWeight: FontWeight.w500,
                 color: Color.fromRGBO(132, 132, 132, 1),
               ),
             ),
