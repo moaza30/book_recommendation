@@ -31,8 +31,9 @@ class _SignInBodyState extends State<SignInBody> {
       setState(() {
         loggingIn = false;
       });
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(error)));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(error)),
+      );
     }
   }
 

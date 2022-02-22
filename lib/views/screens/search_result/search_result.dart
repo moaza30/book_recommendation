@@ -4,8 +4,14 @@ import 'package:book_recommendation/views/widgets/home_screen_widget/book_list.d
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SearchResult extends StatelessWidget {
+class SearchResult extends StatefulWidget {
   static const String routename = 'SearchResult';
+
+  @override
+  State<SearchResult> createState() => _SearchResultState();
+}
+
+class _SearchResultState extends State<SearchResult> {
   String? bookName;
 
   @override
@@ -29,7 +35,8 @@ class SearchResult extends StatelessWidget {
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return const Center(
-                          child: CircularProgressIndicator.adaptive());
+                        child: CircularProgressIndicator.adaptive(),
+                      );
                     }
                     if (snapshot.data == null) {
                       return const Center(

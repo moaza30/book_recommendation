@@ -5,12 +5,13 @@ import 'package:http/http.dart' as http;
 
 class SearchServices with ChangeNotifier {
   String baseUrl = 'https://www.googleapis.com/books/v1';
+  final String _apikey = 'AIzaSyD0crpZjOGB67NKjG8hZw8rXFpeG66QukI';
   List<Books> books = [];
 
   Future<List<Books>?> searchBooks(String? bookName) async {
     print(bookName);
     try {
-      Uri link = Uri.parse('$baseUrl/volumes?q=$bookName');
+      Uri link = Uri.parse('$baseUrl/volumes?q=$bookName&key=$_apikey');
       http.Response response = await http.get(link);
       final jsonData = jsonDecode(response.body)['items'];
       List<Books> bookList = [];
