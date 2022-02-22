@@ -11,6 +11,21 @@ class BookDetailsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    void addFavorite() {
+      if (isFavorite == false) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text(
+              'This books added to your favorites',
+              textAlign: TextAlign.center,
+            ),
+            duration: Duration(seconds: 1),
+            backgroundColor: Color.fromRGBO(90, 189, 140, 1),
+          ),
+        );
+      }
+    }
+
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -67,7 +82,11 @@ class BookDetailsWidget extends StatelessWidget {
               ),
               const Spacer(),
               FavoriteButton(
-                  valueChanged: (_isFavorite) {}, isFavorite: !isFavorite),
+                  valueChanged: (_isFavorite) {
+                    addFavorite();
+                    isFavorite = !isFavorite;
+                  },
+                  isFavorite: false),
               const Spacer(
                 flex: 3,
               ),
