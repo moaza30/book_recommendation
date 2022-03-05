@@ -17,7 +17,9 @@ class SearchServices with ChangeNotifier {
       for (var item in jsonData) {
         bookList.add(Books.fromJson(item));
       }
+      books.clear();
       books.addAll(bookList);
+      notifyListeners();
       return books;
     } catch (error) {
       print(error);

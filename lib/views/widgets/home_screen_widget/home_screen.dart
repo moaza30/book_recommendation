@@ -14,9 +14,10 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   late Books book;
-
+  BooksProvider? result;
   @override
   Widget build(BuildContext context) {
+    result = Provider.of<BooksProvider>(context, listen: false);
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -46,8 +47,8 @@ class _HomeScreenState extends State<HomeScreen> {
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height * 0.30,
             child: FutureBuilder<List<Books>?>(
-              future:
-                  Provider.of<BooksProvider>(context, listen: false).getBooks(),
+              future: Provider.of<BooksProvider>(context, listen: false)
+                  .booksFuture,
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(
@@ -68,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       scrollDirection: Axis.horizontal,
                       itemCount: 10,
                       itemBuilder: (context, index) {
-                        return BookList(snapshot.data![index]);
+                        return BookList(result!.books[index]);
                       },
                     ),
                   );

@@ -1,5 +1,5 @@
 import 'package:book_recommendation/controllers/books_provider.dart';
-import 'package:book_recommendation/services/search_services.dart';
+import 'package:book_recommendation/controllers/search_services.dart';
 import 'package:book_recommendation/views/screens/book_details/book_details_screen.dart';
 import 'package:book_recommendation/views/screens/home_screen/main_screen.dart';
 import 'package:book_recommendation/views/screens/search_result/search_result.dart';

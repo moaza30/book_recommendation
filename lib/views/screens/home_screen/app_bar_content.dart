@@ -1,5 +1,5 @@
 import 'package:book_recommendation/models/books_model.dart';
-import 'package:book_recommendation/services/search_services.dart';
+import 'package:book_recommendation/controllers/search_services.dart';
 import 'package:book_recommendation/views/screens/search_result/search_result.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

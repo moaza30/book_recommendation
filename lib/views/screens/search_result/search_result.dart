@@ -1,5 +1,5 @@
 import 'package:book_recommendation/models/books_model.dart';
-import 'package:book_recommendation/services/search_services.dart';
+import 'package:book_recommendation/controllers/search_services.dart';
 import 'package:book_recommendation/views/widgets/home_screen_widget/book_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -13,10 +13,12 @@ class SearchResult extends StatefulWidget {
 
 class _SearchResultState extends State<SearchResult> {
   String? bookName;
+  SearchServices? result;
 
   @override
   Widget build(BuildContext context) {
     bookName = ModalRoute.of(context)!.settings.arguments as String;
+    result = Provider.of<SearchServices>(context, listen: false);
 
     return Scaffold(
         appBar: AppBar(
@@ -52,9 +54,9 @@ class _SearchResultState extends State<SearchResult> {
                         child: ListView.builder(
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
-                          itemCount: snapshot.data!.length,
+                          itemCount: result!.books.length,
                           itemBuilder: (context, index) {
-                            return BookList(snapshot.data![index]);
+                            return BookList(result!.books[index]);
                           },
                         ),
                       );

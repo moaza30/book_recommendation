@@ -17,7 +17,7 @@ class MainScreen extends StatefulWidget {
 
 class _MainScreenState extends State<MainScreen> {
   late int currentScreenIndex;
-
+  BooksProvider? test;
   RefreshController _refreshController =
       RefreshController(initialRefresh: false);
 
@@ -30,11 +30,13 @@ class _MainScreenState extends State<MainScreen> {
   ];
 // This Function for pull up to refresh
   void _onRefresh() async {
+    test = Provider.of<BooksProvider>(context, listen: false);
     // monitor network fetch
     await Future.delayed(Duration(milliseconds: 1000));
     // if failed,use refreshFailed()
     _refreshController.refreshCompleted();
-    Provider.of<BooksProvider>(context, listen: false).getBooks();
+    test!.booksFuture =
+        Provider.of<BooksProvider>(context, listen: false).getBooks();
   }
 
   // function for select widget

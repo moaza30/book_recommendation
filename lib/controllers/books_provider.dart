@@ -7,9 +7,11 @@ import 'package:http/http.dart' as http;
 class BooksProvider with ChangeNotifier {
   String baseUrl = 'https://www.googleapis.com/books/v1';
   List<Books> books = [];
+  var booksFuture;
 
   Future<List<Books>?> getBooks() async {
     try {
+      print("Test");
       Uri link = Uri.parse('$baseUrl/volumes?q=flutter');
       /* final response = await http.get(Uri.parse(
         "https://www.googleapis.com/books/v1/volumes?q=$query&startIndex=$page&maxResults=40")); */
