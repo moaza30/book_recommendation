@@ -179,9 +179,11 @@ class _SignInBodyState extends State<SignInBody> {
                         padding: const EdgeInsets.all(20),
                       ),
                       //-----------
-                      onPressed: () {
+                      onPressed: () async {
                         if (form.currentState!.validate()) {
-                          login();
+                          await login();
+                          Navigator.of(context)
+                              .pushReplacementNamed(MainScreen.routeName);
                         }
                       },
                       child: const Text(

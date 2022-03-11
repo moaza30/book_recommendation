@@ -35,8 +35,8 @@ class _MainScreenState extends State<MainScreen> {
     await Future.delayed(Duration(milliseconds: 1000));
     // if failed,use refreshFailed()
     _refreshController.refreshCompleted();
-    test!.booksFuture =
-        Provider.of<BooksProvider>(context, listen: false).getBooks();
+    /* test!.booksFuture =
+        Provider.of<BooksProvider>(context, listen: false).getBooks();*/
   }
 
   // function for select widget
