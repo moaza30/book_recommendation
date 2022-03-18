@@ -1,11 +1,15 @@
-import 'package:book_recommendation/models/books_model.dart';
+import 'package:book_recommendation/models/books_api_manager.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:favorite_button/favorite_button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 
 class BookDetailsWidget extends StatelessWidget {
   late Books books;
   bool isFavorite = false;
+  CollectionReference booksID =
+      FirebaseFirestore.instance.collection('booksId');
 
   BookDetailsWidget(this.books);
 
@@ -85,6 +89,10 @@ class BookDetailsWidget extends StatelessWidget {
                   valueChanged: (_isFavorite) {
                     addFavorite();
                     isFavorite = !isFavorite;
+                    booksID.add({
+                      'bookId': books.id,
+                      'useerId': FirebaseAuth.instance.currentUser!.email
+                    });
                   },
                   isFavorite: false),
               const Spacer(

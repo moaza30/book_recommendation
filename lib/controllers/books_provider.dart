@@ -1,8 +1,9 @@
 import 'dart:convert';
-import 'package:book_recommendation/models/books_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
+
+import '../models/books_api_manager.dart';
 
 class BooksProvider with ChangeNotifier {
   String baseUrl = 'https://www.googleapis.com/books/v1';

@@ -1,5 +1,6 @@
 import 'package:book_recommendation/controllers/auth_provider.dart';
 import 'package:book_recommendation/views/screens/start_screen/start_screen.dart';
+import 'package:book_recommendation/views/widgets/home_screen_widget/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -60,9 +61,7 @@ class MenuScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(15),
               ),
               icon: const Icon(Icons.lock_open_outlined, color: Colors.black),
-              onPressed: () {
-                Provider.of<AuthProvider>(context, listen: false).logut();
-              },
+              onPressed: () {},
               label: const Text(
                 "Change Password",
                 style: TextStyle(
@@ -86,6 +85,8 @@ class MenuScreen extends StatelessWidget {
               icon: const Icon(Icons.login_outlined, color: Colors.black),
               onPressed: () {
                 Provider.of<AuthProvider>(context, listen: false).logut();
+                Navigator.of(context)
+                    .pushReplacementNamed(StartScreen.routename);
               },
               label: const Text(
                 "LogOut",

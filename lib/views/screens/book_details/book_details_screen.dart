@@ -1,4 +1,4 @@
-import 'package:book_recommendation/models/books_model.dart';
+import 'package:book_recommendation/models/books_api_manager.dart';
 import 'package:book_recommendation/views/screens/book_details/content_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

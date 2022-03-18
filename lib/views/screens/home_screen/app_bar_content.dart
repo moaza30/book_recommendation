@@ -1,11 +1,11 @@
-import 'package:book_recommendation/models/books_model.dart';
-import 'package:book_recommendation/controllers/search_services.dart';
+import 'package:book_recommendation/models/books_api_manager.dart';
 import 'package:book_recommendation/views/screens/search_result/search_result.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class AppBarContent extends StatelessWidget {
   String? bookName;
+  TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -27,11 +27,13 @@ class AppBarContent extends StatelessWidget {
           margin: const EdgeInsets.only(right: 10),
           height: 35,
           child: TextField(
+            controller: controller,
             onSubmitted: (data) async {
               bookName = data;
               print(bookName);
               Navigator.of(context)
                   .pushNamed(SearchResult.routename, arguments: bookName);
+              controller.clear();
             },
             decoration: InputDecoration(
               filled: true,

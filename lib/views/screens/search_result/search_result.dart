@@ -1,5 +1,6 @@
-import 'package:book_recommendation/models/books_model.dart';
-import 'package:book_recommendation/controllers/search_services.dart';
+import 'package:book_recommendation/controllers/books_provider.dart';
+import 'package:book_recommendation/controllers/search_provider.dart';
+import 'package:book_recommendation/models/books_api_manager.dart';
 import 'package:book_recommendation/views/widgets/home_screen_widget/book_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +15,7 @@ class SearchResult extends StatefulWidget {
 class _SearchResultState extends State<SearchResult> {
   String? bookName;
   SearchServices? result;
+  final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {

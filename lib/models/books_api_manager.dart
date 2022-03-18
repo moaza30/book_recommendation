@@ -1,18 +1,35 @@
-import 'dart:convert';
+class Books {
+  String? thumbnail, id, webRead;
+  String? title, publishedDate;
+  String? authors, description;
 
-import 'package:book_recommendation/models/books_model.dart';
+  Books(
+      {this.id,
+      this.authors,
+      this.title,
+      this.thumbnail,
+      this.description,
+      this.publishedDate,
+      this.webRead});
 
-import 'package:http/http.dart' as http;
+  factory Books.fromJson(Map<String, dynamic> data) {
+    String getThumbnailSafety(Map<String, dynamic> data) {
+      final imageLinks = data['volumeInfo']['imageLinks'];
+      if (imageLinks != null && imageLinks['thumbnail'] != null) {
+        return imageLinks['thumbnail'];
+      } else {
+        return "https://yt3.ggpht.com/ytc/AKedOLR0Q2jl80Ke4FS0WrTjciAu_w6WETLlI0HmzPa4jg=s176-c-k-c0x00ffffff-no-rj";
+      }
+    }
 
-class BooksApiManager {
-  String baseUrl = 'https://www.googleapis.com/books/v1';
-
-  Future<List<Books>?> getBooks() async {
-    Uri link = Uri.parse('$baseUrl/volumes?q=flutter');
-    /* final response = await http.get(Uri.parse(
-        "https://www.googleapis.com/books/v1/volumes?q=$query&startIndex=$page&maxResults=40")); */
-    http.Response response = await http.get(link);
-    final jsonData = jsonDecode(response.body)['items'];
-    return jsonData;
+    return Books(
+      id: data['id'],
+      title: data["volumeInfo"]["title"],
+      authors: data["volumeInfo"]["authors"][0],
+      thumbnail: getThumbnailSafety(data).replaceAll("httpss", "https"),
+      description: data['volumeInfo']['description'],
+      publishedDate: data['volumeInfo']['publishedDate'],
+      webRead: data['volumeInfo']['previewLink'],
+    );
   }
 }
