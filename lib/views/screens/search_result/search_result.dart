@@ -1,9 +1,10 @@
 import 'package:book_recommendation/controllers/books_provider.dart';
-import 'package:book_recommendation/controllers/search_provider.dart';
 import 'package:book_recommendation/models/books_api_manager.dart';
 import 'package:book_recommendation/views/widgets/home_screen_widget/book_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../../controllers/search_services.dart';
 
 class SearchResult extends StatefulWidget {
   static const String routename = 'SearchResult';
@@ -56,9 +57,9 @@ class _SearchResultState extends State<SearchResult> {
                         child: ListView.builder(
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
-                          itemCount: result!.books.length,
+                          itemCount: snapshot.data!.length,
                           itemBuilder: (context, index) {
-                            return BookList(result!.books[index]);
+                            return BookList(snapshot.data![index]);
                           },
                         ),
                       );
