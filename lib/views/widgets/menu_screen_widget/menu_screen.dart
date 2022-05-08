@@ -1,8 +1,5 @@
 import 'package:book_recommendation/controllers/auth_provider.dart';
-import 'package:book_recommendation/views/screens/start_screen/start_screen.dart';
-import 'package:book_recommendation/views/widgets/home_screen_widget/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -85,8 +82,6 @@ class MenuScreen extends StatelessWidget {
               icon: const Icon(Icons.login_outlined, color: Colors.black),
               onPressed: () {
                 Provider.of<AuthProvider>(context, listen: false).logut();
-                Navigator.of(context)
-                    .pushReplacementNamed(StartScreen.routename);
               },
               label: const Text(
                 "LogOut",

@@ -8,10 +8,10 @@ import 'package:readmore/readmore.dart';
 class BookDetailsWidget extends StatelessWidget {
   late Books books;
   bool isFavorite = false;
-  CollectionReference booksID =
-      FirebaseFirestore.instance.collection('booksId');
-
   BookDetailsWidget(this.books);
+
+  CollectionReference booksID =
+      FirebaseFirestore.instance.collection('booksID');
 
   @override
   Widget build(BuildContext context) {
@@ -90,8 +90,8 @@ class BookDetailsWidget extends StatelessWidget {
                     addFavorite();
                     isFavorite = !isFavorite;
                     booksID.add({
-                      'bookId': books.id,
-                      'useerId': FirebaseAuth.instance.currentUser!.email
+                      'bookID': books.id,
+                      'userId': FirebaseAuth.instance.currentUser!.email
                     });
                   },
                   isFavorite: false),
@@ -120,7 +120,7 @@ class BookDetailsWidget extends StatelessWidget {
                     trimMode: TrimMode.Line,
                     trimCollapsedText: 'Read more',
                     trimExpandedText: 'Read less',
-                    colorClickableText: Color.fromRGBO(90, 189, 140, 1),
+                    colorClickableText: const Color.fromRGBO(90, 189, 140, 1),
                     style:
                         const TextStyle(fontSize: 16, color: Color(0xFF6D727A)),
                   ),

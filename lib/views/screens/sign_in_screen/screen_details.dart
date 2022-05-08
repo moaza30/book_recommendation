@@ -13,11 +13,12 @@ class SignInBody extends StatefulWidget {
 
 class _SignInBodyState extends State<SignInBody> {
   bool value = false;
+  bool loggingIn = false, resettingPassword = false;
+
   final TextEditingController email = TextEditingController(),
       password = TextEditingController();
 
   final GlobalKey<FormState> form = GlobalKey<FormState>();
-  bool loggingIn = false, resettingPassword = false;
 
   Future<void> login() async {
     setState(() {
@@ -51,16 +52,18 @@ class _SignInBodyState extends State<SignInBody> {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(error)));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-        content: Text('Reset password email has been sent.'),
-        backgroundColor: Colors.green,
-      ));
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Reset password email has been sent.'),
+          backgroundColor: Color.fromRGBO(90, 189, 140, 1),
+        ),
+      );
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return loggingIn
+    return loggingIn || resettingPassword
         ? Container(
             color: Colors.white,
             child: const Center(
@@ -179,11 +182,9 @@ class _SignInBodyState extends State<SignInBody> {
                         padding: const EdgeInsets.all(20),
                       ),
                       //-----------
-                      onPressed: () async {
+                      onPressed: () {
                         if (form.currentState!.validate()) {
-                          await login();
-                          Navigator.of(context)
-                              .pushReplacementNamed(MainScreen.routeName);
+                          login();
                         }
                       },
                       child: const Text(
@@ -195,6 +196,16 @@ class _SignInBodyState extends State<SignInBody> {
                         ),
                       ),
                     ),
+                  ),
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      primary: const Color.fromRGBO(90, 189, 140, 1),
+                    ),
+                    onPressed: () {
+                      Provider.of<AuthProvider>(context, listen: false)
+                          .changeScreen();
+                    },
+                    child: const Text('Sign Up for free'),
                   ),
                   TextButton(
                     style: TextButton.styleFrom(

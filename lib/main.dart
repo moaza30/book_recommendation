@@ -1,5 +1,5 @@
 import 'package:book_recommendation/controllers/books_provider.dart';
-import 'package:book_recommendation/controllers/search_services.dart';
+import 'package:book_recommendation/views/screens/auth_screnn.dart';
 import 'package:book_recommendation/views/screens/book_details/book_details_screen.dart';
 import 'package:book_recommendation/views/screens/home_screen/main_screen.dart';
 import 'package:book_recommendation/views/screens/search_result/search_result.dart';
@@ -27,7 +27,6 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (context) => AuthProvider()),
         ChangeNotifierProvider(create: (context) => BooksProvider()),
-        ChangeNotifierProvider(create: (context) => SearchServices()),
       ],
       child: const MyApp(),
     ),
@@ -55,7 +54,7 @@ class MyApp extends StatelessWidget {
           if (snapshot.data != null) {
             return MainScreen();
           } else {
-            return StartScreen();
+            return AuthScreen();
           }
         },
       ),

@@ -68,29 +68,6 @@ class StartScreenStyle extends StatelessWidget {
             ),
           ),
         ),
-
-        //Container For Skip Button
-        Container(
-          padding: EdgeInsets.only(
-              top: MediaQuery.of(context).size.height * 0.22, right: 20),
-          child: Align(
-            alignment: Alignment.bottomRight,
-            child: TextButton(
-              onPressed: () {
-                Navigator.of(context).pushNamed(MainScreen.routeName);
-                // Provider.of<BooksProvider>(context, listen: false).getBooks();
-              },
-              child: const Text(
-                'Skip ',
-                style: TextStyle(
-                  fontSize: 19,
-                  fontWeight: FontWeight.w400,
-                  color: Color.fromRGBO(90, 189, 140, 1),
-                ),
-              ),
-            ),
-          ),
-        ),
       ],
     );
   }

@@ -4,8 +4,6 @@ import 'package:book_recommendation/views/widgets/home_screen_widget/book_list.d
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../../controllers/search_services.dart';
-
 class SearchResult extends StatefulWidget {
   static const String routename = 'SearchResult';
 
@@ -15,13 +13,11 @@ class SearchResult extends StatefulWidget {
 
 class _SearchResultState extends State<SearchResult> {
   String? bookName;
-  SearchServices? result;
   final ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     bookName = ModalRoute.of(context)!.settings.arguments as String;
-    result = Provider.of<SearchServices>(context, listen: false);
 
     return Scaffold(
         appBar: AppBar(
@@ -35,7 +31,7 @@ class _SearchResultState extends State<SearchResult> {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
                 child: FutureBuilder<List<Books>?>(
-                  future: Provider.of<SearchServices>(context, listen: false)
+                  future: Provider.of<BooksProvider>(context, listen: false)
                       .searchBooks(bookName!),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {

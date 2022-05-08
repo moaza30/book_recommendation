@@ -1,9 +1,21 @@
 import 'package:book_recommendation/views/screens/home_screen/main_screen.dart';
-import 'package:book_recommendation/views/widgets/home_screen_widget/home_screen.dart';
+import 'package:book_recommenda'
+    'tion/views/widgets/home_screen_widget/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class AuthProvider with ChangeNotifier {
+  int currentScreenIndex = 0;
+  @override
+  void changeScreen() {
+    if (currentScreenIndex == 0) {
+      currentScreenIndex = 1;
+    } else {
+      currentScreenIndex = 0;
+    }
+    notifyListeners();
+  }
+
   Future<String?> createAccount(
       String email, String password, String username) async {
     try {
@@ -13,6 +25,7 @@ class AuthProvider with ChangeNotifier {
         password: password,
       );
       FirebaseAuth.instance.currentUser!.updateDisplayName(username);
+      currentScreenIndex = 0;
 
       notifyListeners();
       return null;
@@ -27,6 +40,7 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
+//**********************
   Future<String?> login(String email, String password) async {
     try {
       UserCredential userCredential = await FirebaseAuth.instance

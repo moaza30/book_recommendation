@@ -88,7 +88,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                           borderRadius: BorderRadius.circular(20),
                         ),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
+                          borderSide: const BorderSide(
                             color: Color.fromRGBO(239, 239, 239, 0.5),
                           ),
                           borderRadius: BorderRadius.circular(20),
@@ -98,7 +98,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                   ),
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 20).add(
-                      EdgeInsets.only(top: 20),
+                      const EdgeInsets.only(top: 20),
                     ),
                     child: TextFormField(
                       validator: (value) {
@@ -136,7 +136,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                   ),
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 20).add(
-                      EdgeInsets.only(top: 20),
+                      const EdgeInsets.only(top: 20),
                     ),
                     child: TextFormField(
                       controller: password,
@@ -185,7 +185,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                   ),
                   Container(
                     margin: const EdgeInsets.symmetric(horizontal: 20).add(
-                      EdgeInsets.only(top: 20),
+                      const EdgeInsets.only(top: 20),
                     ),
                     child: TextFormField(
                       validator: (value) {
@@ -226,7 +226,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                   Container(
                     width: MediaQuery.of(context).size.width,
                     margin: const EdgeInsets.symmetric(horizontal: 20).add(
-                      EdgeInsets.only(top: 15),
+                      const EdgeInsets.only(top: 15),
                     ),
                     child: OutlinedButton(
                       style: OutlinedButton.styleFrom(
