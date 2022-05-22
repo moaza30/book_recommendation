@@ -11,50 +11,46 @@ class FavouriteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            margin: const EdgeInsets.all(15),
-            child: const Text(
-              'Favourites',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          margin: const EdgeInsets.all(15),
+          child: const Text(
+            'Favourites',
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
-          StreamBuilder<QuerySnapshot>(
-              stream: null,
-              builder: (context, snapshot) {
-                FirebaseFirestore.instance
-                    .collection('booksID')
-                    .where('userId',
-                        isEqualTo: FirebaseAuth.instance.currentUser!.email)
-                    .get()
-                    .asStream();
-                print(BooksId.fromJson(snapshot.data!.docs[0]));
-                return Expanded(
-                  child: GridView.builder(
-                    itemCount: 10,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 15,
-                    ),
-                    itemBuilder: (context, index) {
-                      return InkWell(
-                        onTap: () {
-                          Navigator.of(context).pushNamed(
-                              BooksDetails.routename,
-                              arguments: books);
-                        },
-                        child: Image.asset('assets/images/Rectangle 307.png'),
-                      );
-                    },
+        ),
+        StreamBuilder<QuerySnapshot>(
+            stream: null,
+            builder: (context, snapshot) {
+              FirebaseFirestore.instance
+                  .collection('booksID')
+                  .where('userId',
+                      isEqualTo: FirebaseAuth.instance.currentUser!.email)
+                  .get()
+                  .asStream();
+              print(BooksId.fromJson(snapshot.data!.docs[0]));
+              return Expanded(
+                child: GridView.builder(
+                  itemCount: 10,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 15,
                   ),
-                );
-              }),
-        ],
-      ),
+                  itemBuilder: (context, index) {
+                    return InkWell(
+                      onTap: () {
+                        Navigator.of(context).pushNamed(BooksDetails.routename,
+                            arguments: books);
+                      },
+                      child: Image.asset('assets/images/Rectangle 307.png'),
+                    );
+                  },
+                ),
+              );
+            }),
+      ],
     );
   }
 }

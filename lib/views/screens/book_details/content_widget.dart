@@ -1,3 +1,4 @@
+import 'package:book_recommendation/consts/color_manager.dart';
 import 'package:book_recommendation/models/books_api_manager.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:favorite_button/favorite_button.dart';
@@ -24,7 +25,7 @@ class BookDetailsWidget extends StatelessWidget {
               textAlign: TextAlign.center,
             ),
             duration: Duration(seconds: 1),
-            backgroundColor: Color.fromRGBO(90, 189, 140, 1),
+            backgroundColor: ColorManager.mainColor,
           ),
         );
       }
@@ -67,9 +68,9 @@ class BookDetailsWidget extends StatelessWidget {
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.all(0),
-                    primary: const Color.fromRGBO(90, 189, 140, 1),
+                    primary: ColorManager.mainColor,
                     side: const BorderSide(
-                      color: Color.fromRGBO(90, 189, 140, 1),
+                      color: ColorManager.mainColor,
                       width: 1.0,
                     ),
                     shape: RoundedRectangleBorder(
@@ -120,7 +121,7 @@ class BookDetailsWidget extends StatelessWidget {
                     trimMode: TrimMode.Line,
                     trimCollapsedText: 'Read more',
                     trimExpandedText: 'Read less',
-                    colorClickableText: const Color.fromRGBO(90, 189, 140, 1),
+                    colorClickableText: ColorManager.mainColor,
                     style:
                         const TextStyle(fontSize: 16, color: Color(0xFF6D727A)),
                   ),

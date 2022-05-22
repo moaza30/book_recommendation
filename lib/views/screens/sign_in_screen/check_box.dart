@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../../consts/color_manager.dart';
+
 class CheckBox_SignIn extends StatefulWidget {
   @override
   State<CheckBox_SignIn> createState() => _CheckBox_SignInState();
@@ -17,9 +19,9 @@ class _CheckBox_SignInState extends State<CheckBox_SignIn> {
           Transform.scale(
             scale: 1.2,
             child: Checkbox(
-              activeColor: Color.fromRGBO(90, 189, 140, 1),
-              shape: CircleBorder(),
-              value: this.value,
+              activeColor: ColorManager.mainColor,
+              shape: const CircleBorder(),
+              value: value,
               onChanged: (bool? value) {
                 setState(() {
                   this.value = value!;
@@ -27,7 +29,7 @@ class _CheckBox_SignInState extends State<CheckBox_SignIn> {
               },
             ),
           ),
-          Text(
+          const Text(
             'Stay Logged In ',
             style: TextStyle(fontSize: 12, fontWeight: FontWeight.w300),
           ),

@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import '../../../consts/color_manager.dart';
+
 class MainScreen extends StatefulWidget {
   static const String routeName = "HomeScreen";
 
@@ -18,7 +20,7 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   late int currentScreenIndex;
   BooksProvider? test;
-  RefreshController _refreshController =
+  final RefreshController _refreshController =
       RefreshController(initialRefresh: false);
 
   //************************
@@ -32,7 +34,7 @@ class _MainScreenState extends State<MainScreen> {
   void _onRefresh() async {
     test = Provider.of<BooksProvider>(context, listen: false);
     // monitor network fetch
-    await Future.delayed(Duration(milliseconds: 1000));
+    await Future.delayed(const Duration(milliseconds: 1000));
     // if failed,use refreshFailed()
     _refreshController.refreshCompleted();
     /* test!.booksFuture =
@@ -49,17 +51,17 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ColorManager.whiteColor,
       appBar: (currentScreenIndex == 3)
           ? AppBar(
               automaticallyImplyLeading: false,
-              backgroundColor: Colors.white,
+              backgroundColor: ColorManager.whiteColor,
               elevation: 0.0,
               title: Text(''),
             )
           : AppBar(
               automaticallyImplyLeading: false,
-              backgroundColor: Colors.white,
+              backgroundColor: ColorManager.whiteColor,
               elevation: 0.0,
               title: AppBarContent(),
             ),
@@ -85,8 +87,8 @@ class _MainScreenState extends State<MainScreen> {
             showUnselectedLabels: false,
             currentIndex: currentScreenIndex,
             type: BottomNavigationBarType.fixed,
-            selectedItemColor: const Color.fromRGBO(90, 189, 140, 1.0),
-            unselectedItemColor: Colors.black,
+            selectedItemColor: ColorManager.mainColor,
+            unselectedItemColor: ColorManager.blackColor,
             onTap: (index) {
               currentScreenIndex = index;
               setState(() {});
@@ -96,60 +98,41 @@ class _MainScreenState extends State<MainScreen> {
               BottomNavigationBarItem(
                 label: '',
                 icon: (currentScreenIndex == 0)
-                    ? Container(
-                        //padding: const EdgeInsets.only(bottom: 1),
-                        child: const ImageIcon(
-                          AssetImage('assets/icons/home-filled.png'),
-                        ),
+                    ? const ImageIcon(
+                        AssetImage('assets/icons/home-filled.png'),
                       )
-                    : Container(
-                        child: const ImageIcon(
-                          AssetImage('assets/icons/home_ico.png'),
-                        ),
+                    : const ImageIcon(
+                        AssetImage('assets/icons/home_ico.png'),
                       ),
               ),
               BottomNavigationBarItem(
                 label: '',
                 icon: (currentScreenIndex == 1)
-                    ? Container(
-                        child: const ImageIcon(
-                          AssetImage('assets/icons/fav-filled.png'),
-                        ),
+                    ? const ImageIcon(
+                        AssetImage('assets/icons/fav-filled.png'),
                       )
-                    : Container(
-                        child: const ImageIcon(
-                          AssetImage('assets/icons/fav_ico.png'),
-                        ),
+                    : const ImageIcon(
+                        AssetImage('assets/icons/fav_ico.png'),
                       ),
               ),
               BottomNavigationBarItem(
                 label: '',
                 icon: (currentScreenIndex == 2)
-                    ? Container(
-                        //padding: const EdgeInsets.only(bottom: 1),
-                        child: const ImageIcon(
-                          AssetImage('assets/icons/categ-filled.png'),
-                        ),
+                    ? const ImageIcon(
+                        AssetImage('assets/icons/categ-filled.png'),
                       )
-                    : Container(
-                        child: const ImageIcon(
-                          AssetImage('assets/icons/category_ico.png'),
-                        ),
+                    : const ImageIcon(
+                        AssetImage('assets/icons/category_ico.png'),
                       ),
               ),
               BottomNavigationBarItem(
                 label: '',
                 icon: (currentScreenIndex == 3)
-                    ? Container(
-                        //padding: const EdgeInsets.only(bottom: 1),
-                        child: const ImageIcon(
-                          AssetImage('assets/icons/menu-filled.png'),
-                        ),
+                    ? const ImageIcon(
+                        AssetImage('assets/icons/menu-filled.png'),
                       )
-                    : Container(
-                        child: const ImageIcon(
-                          AssetImage('assets/icons/menu_ico.png'),
-                        ),
+                    : const ImageIcon(
+                        AssetImage('assets/icons/menu_ico.png'),
                       ),
               ),
             ],

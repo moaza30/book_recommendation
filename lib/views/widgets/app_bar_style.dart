@@ -1,3 +1,4 @@
+import 'package:book_recommendation/consts/color_manager.dart';
 import 'package:flutter/material.dart';
 
 class AppBarStyle extends StatelessWidget {
@@ -6,14 +7,14 @@ class AppBarStyle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: ColorManager.whiteColor,
       elevation: 0.0,
       iconTheme: const IconThemeData(
-        color: Color.fromRGBO(90, 189, 140, 1), //change your color here
-      ),
+          color: ColorManager.mainColor //change your color here
+          ),
       title: Text(
         title!,
-        style: const TextStyle(color: Colors.black),
+        style: const TextStyle(color: ColorManager.blackColor),
       ),
       centerTitle: true,
     );

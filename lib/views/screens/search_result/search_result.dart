@@ -4,6 +4,8 @@ import 'package:book_recommendation/views/widgets/home_screen_widget/book_list.d
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../consts/color_manager.dart';
+
 class SearchResult extends StatefulWidget {
   static const String routename = 'SearchResult';
 
@@ -21,13 +23,13 @@ class _SearchResultState extends State<SearchResult> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text('Search Result'),
+          title: const Text('Search Result'),
           centerTitle: true,
         ),
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
                 child: FutureBuilder<List<Books>?>(
@@ -43,8 +45,7 @@ class _SearchResultState extends State<SearchResult> {
                       return const Center(
                         child: Text(
                           'No results Please try again',
-                          style:
-                              TextStyle(color: Color.fromRGBO(90, 189, 140, 1)),
+                          style: TextStyle(color: ColorManager.mainColor),
                         ),
                       );
                     } else {

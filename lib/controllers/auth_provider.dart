@@ -1,12 +1,13 @@
-import 'package:book_recommendation/views/screens/home_screen/main_screen.dart';
-import 'package:book_recommenda'
-    'tion/views/widgets/home_screen_widget/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthProvider with ChangeNotifier {
   int currentScreenIndex = 0;
-  @override
+  Map<String, dynamic>? userdata;
+  AccessToken? _accessToken;
+
   void changeScreen() {
     if (currentScreenIndex == 0) {
       currentScreenIndex = 1;
@@ -66,7 +67,52 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
-  void logut() {
+  void logOut() {
     FirebaseAuth.instance.signOut();
+  }
+
+  Future<UserCredential> signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+      // Obtain the auth details from the request
+      final GoogleSignInAuthentication? googleAuth =
+          await googleUser?.authentication;
+
+      // Create a new credential
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth?.accessToken,
+        idToken: googleAuth?.idToken,
+      );
+      // Once signed in, return the UserCredential
+      return await FirebaseAuth.instance.signInWithCredential(credential);
+    } catch (e) {
+      throw Exception("Error has occurred Please try again later");
+    }
+  }
+
+  Future<UserCredential> signInWithFacebook() async {
+    try {
+      final LoginResult loginResult = await FacebookAuth.instance.login(
+        permissions: ['public_profile', 'email'],
+      );
+
+      final OAuthCredential facebookAuthCredential =
+          FacebookAuthProvider.credential(loginResult.accessToken!.token);
+
+      if (loginResult.status == LoginStatus.success) {
+        _accessToken = loginResult.accessToken;
+        //final userData = await FacebookAuth.instance.getUserData();
+        final userData = await FacebookAuth.instance
+            .getUserData(fields: "birthday,gender,link");
+        userdata = userData;
+        print(userdata);
+      }
+
+      return await FirebaseAuth.instance
+          .signInWithCredential(facebookAuthCredential);
+    } catch (e) {
+      throw Exception("Error has occurred Please try again later");
+    }
   }
 }

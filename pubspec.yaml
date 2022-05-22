@@ -30,18 +30,20 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  firebase_core: ^1.12.0
-  cloud_firestore: ^3.1.7
-  firebase_auth: ^3.3.6
-  firebase_storage: ^10.2.4
+  firebase_core: ^1.17.0
+  cloud_firestore: ^3.1.15
+  firebase_auth: ^3.3.18
+  firebase_storage: ^10.2.16
   provider: ^6.0.2
   email_validator: ^2.0.1
   dio: ^4.0.4
   readmore: ^2.1.0
   http: ^0.13.4
   pull_to_refresh: ^2.0.0
-  url_launcher: ^6.0.18
   favorite_button: ^0.0.4
+  google_sign_in: ^5.3.1
+  flutter_facebook_auth: ^4.3.4
+  sign_button: ^2.0.2
 
 dev_dependencies:
   flutter_test:

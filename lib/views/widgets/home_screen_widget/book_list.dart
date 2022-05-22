@@ -1,3 +1,4 @@
+import 'package:book_recommendation/consts/color_manager.dart';
 import 'package:book_recommendation/models/books_api_manager.dart';
 import 'package:book_recommendation/views/screens/book_details/book_details_screen.dart';
 import 'package:flutter/material.dart';
@@ -59,7 +60,7 @@ class BookList extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.w500,
-                color: Color.fromRGBO(132, 132, 132, 1),
+                color: ColorManager.greyColor,
               ),
             ),
           ],

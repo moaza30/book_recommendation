@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import 'package:book_recommendation/controllers/auth_provider.dart';
 import 'package:email_validator/email_validator.dart';
 
+import '../../../consts/color_manager.dart';
+
 class SignUpBody extends StatefulWidget {
   @override
   State<SignUpBody> createState() => _SignUpBodyState();
@@ -39,7 +41,7 @@ class _SignUpBodyState extends State<SignUpBody> {
   Widget build(BuildContext context) {
     return isRegistering
         ? Container(
-            color: Colors.white,
+            color: ColorManager.whiteColor,
             child: const Center(
               child: CircularProgressIndicator.adaptive(),
             ),
@@ -76,7 +78,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                       decoration: InputDecoration(
                         contentPadding: const EdgeInsets.all(20),
                         filled: true,
-                        fillColor: const Color.fromRGBO(239, 239, 239, 0.5),
+                        fillColor: ColorManager.grey2,
                         labelStyle: const TextStyle(
                           fontWeight: FontWeight.w300,
                           fontSize: 15,
@@ -89,7 +91,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
-                            color: Color.fromRGBO(239, 239, 239, 0.5),
+                            color: ColorManager.grey2,
                           ),
                           borderRadius: BorderRadius.circular(20),
                         ),
@@ -114,7 +116,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                       decoration: InputDecoration(
                         contentPadding: const EdgeInsets.all(20),
                         filled: true,
-                        fillColor: const Color.fromRGBO(239, 239, 239, 0.5),
+                        fillColor: ColorManager.grey2,
                         labelStyle: const TextStyle(
                           fontWeight: FontWeight.w300,
                           fontSize: 15,
@@ -127,7 +129,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
-                            color: Color.fromRGBO(239, 239, 239, 0.5),
+                            color: ColorManager.grey2,
                           ),
                           borderRadius: BorderRadius.circular(20),
                         ),
@@ -163,7 +165,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                         ),
                         contentPadding: const EdgeInsets.all(20),
                         filled: true,
-                        fillColor: const Color.fromRGBO(239, 239, 239, 0.5),
+                        fillColor: ColorManager.grey2,
                         labelStyle: const TextStyle(
                           fontWeight: FontWeight.w300,
                           fontSize: 15,
@@ -176,7 +178,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
-                            color: Color.fromRGBO(239, 239, 239, 0.5),
+                            color: ColorManager.grey2,
                           ),
                           borderRadius: BorderRadius.circular(20),
                         ),
@@ -199,7 +201,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                       decoration: InputDecoration(
                         contentPadding: const EdgeInsets.all(20),
                         filled: true,
-                        fillColor: const Color.fromRGBO(239, 239, 239, 0.5),
+                        fillColor: ColorManager.grey2,
                         labelStyle: const TextStyle(
                           fontWeight: FontWeight.w300,
                           fontSize: 15,
@@ -212,7 +214,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
-                            color: Color.fromRGBO(239, 239, 239, 0.5),
+                            color: ColorManager.grey2,
                           ),
                           borderRadius: BorderRadius.circular(20),
                         ),
@@ -230,9 +232,9 @@ class _SignUpBodyState extends State<SignUpBody> {
                     ),
                     child: OutlinedButton(
                       style: OutlinedButton.styleFrom(
-                        primary: const Color.fromRGBO(90, 189, 140, 1),
+                        primary: ColorManager.mainColor,
                         side: const BorderSide(
-                          color: Color.fromRGBO(90, 189, 140, 1),
+                          color: ColorManager.mainColor,
                           width: 1.0,
                         ),
                         shape: RoundedRectangleBorder(
@@ -251,7 +253,7 @@ class _SignUpBodyState extends State<SignUpBody> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
-                          color: Color.fromRGBO(90, 189, 140, 1),
+                          color: ColorManager.mainColor,
                         ),
                       ),
                     ),

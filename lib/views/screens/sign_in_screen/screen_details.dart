@@ -5,6 +5,9 @@ import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
+import 'package:sign_button/sign_button.dart';
+
+import '../../../consts/color_manager.dart';
 
 class SignInBody extends StatefulWidget {
   @override
@@ -55,7 +58,7 @@ class _SignInBodyState extends State<SignInBody> {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
           content: Text('Reset password email has been sent.'),
-          backgroundColor: Color.fromRGBO(90, 189, 140, 1),
+          backgroundColor: ColorManager.mainColor,
         ),
       );
     }
@@ -65,7 +68,7 @@ class _SignInBodyState extends State<SignInBody> {
   Widget build(BuildContext context) {
     return loggingIn || resettingPassword
         ? Container(
-            color: Colors.white,
+            color: ColorManager.whiteColor,
             child: const Center(
               child: CircularProgressIndicator.adaptive(),
             ),
@@ -104,7 +107,7 @@ class _SignInBodyState extends State<SignInBody> {
                       decoration: InputDecoration(
                         contentPadding: const EdgeInsets.all(20),
                         filled: true,
-                        fillColor: const Color.fromRGBO(239, 239, 239, 0.5),
+                        fillColor: ColorManager.grey2,
                         labelStyle: const TextStyle(
                           fontWeight: FontWeight.w300,
                           fontSize: 15,
@@ -117,7 +120,7 @@ class _SignInBodyState extends State<SignInBody> {
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
-                            color: Color.fromRGBO(239, 239, 239, 0.5),
+                            color: ColorManager.grey2,
                           ),
                           borderRadius: BorderRadius.circular(20),
                         ),
@@ -141,7 +144,7 @@ class _SignInBodyState extends State<SignInBody> {
                       decoration: InputDecoration(
                         contentPadding: const EdgeInsets.all(20),
                         filled: true,
-                        fillColor: const Color.fromRGBO(239, 239, 239, 0.5),
+                        fillColor: ColorManager.grey2,
                         labelStyle: const TextStyle(
                           fontWeight: FontWeight.w300,
                           fontSize: 15,
@@ -154,7 +157,7 @@ class _SignInBodyState extends State<SignInBody> {
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderSide: const BorderSide(
-                            color: Color.fromRGBO(239, 239, 239, 0.5),
+                            color: ColorManager.grey2,
                           ),
                           borderRadius: BorderRadius.circular(20),
                         ),
@@ -171,9 +174,9 @@ class _SignInBodyState extends State<SignInBody> {
                     ),
                     child: OutlinedButton(
                       style: OutlinedButton.styleFrom(
-                        primary: const Color.fromRGBO(90, 189, 140, 1),
+                        primary: ColorManager.mainColor,
                         side: const BorderSide(
-                          color: Color.fromRGBO(90, 189, 140, 1),
+                          color: ColorManager.mainColor,
                           width: 1.0,
                         ),
                         shape: RoundedRectangleBorder(
@@ -192,14 +195,43 @@ class _SignInBodyState extends State<SignInBody> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w400,
-                          color: Color.fromRGBO(90, 189, 140, 1),
+                          color: ColorManager.mainColor,
                         ),
                       ),
                     ),
                   ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SignInButton(
+                        buttonType: ButtonType.facebook,
+                        width: 120,
+                        btnText: "Facebook",
+                        onPressed: () {
+                          Provider.of<AuthProvider>(context, listen: false)
+                              .signInWithFacebook();
+                        },
+                      ),
+                      const SizedBox(
+                        width: 30,
+                      ),
+                      SignInButton(
+                        buttonType: ButtonType.google,
+                        width: 120,
+                        btnText: "Google",
+                        onPressed: () {
+                          Provider.of<AuthProvider>(context, listen: false)
+                              .signInWithGoogle();
+                        },
+                      ),
+                    ],
+                  ),
                   TextButton(
                     style: TextButton.styleFrom(
-                      primary: const Color.fromRGBO(90, 189, 140, 1),
+                      primary: ColorManager.mainColor,
                     ),
                     onPressed: () {
                       Provider.of<AuthProvider>(context, listen: false)
@@ -209,7 +241,7 @@ class _SignInBodyState extends State<SignInBody> {
                   ),
                   TextButton(
                     style: TextButton.styleFrom(
-                      primary: const Color.fromRGBO(90, 189, 140, 1),
+                      primary: ColorManager.mainColor,
                     ),
                     onPressed: () {
                       resetPassword();

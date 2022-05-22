@@ -3,6 +3,7 @@ import 'package:book_recommendation/views/screens/start_screen/start_screen.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../consts/color_manager.dart';
 import '../../../controllers/auth_provider.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -17,7 +18,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ColorManager.whiteColor,
       appBar: AppBar(
         leading: IconButton(
           onPressed: () {
@@ -25,10 +26,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
           },
           icon: const Icon(Icons.arrow_back),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: ColorManager.whiteColor,
         elevation: 0.0,
         iconTheme: const IconThemeData(
-          color: Color.fromRGBO(90, 189, 140, 1), //change your color here
+          color: ColorManager.mainColor, //change your color here
         ),
       ),
       body: SignUpBody(),

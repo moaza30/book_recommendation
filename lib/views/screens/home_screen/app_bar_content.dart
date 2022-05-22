@@ -3,6 +3,8 @@ import 'package:book_recommendation/views/screens/search_result/search_result.da
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../consts/color_manager.dart';
+
 class AppBarContent extends StatelessWidget {
   String? bookName;
   TextEditingController controller = TextEditingController();
@@ -37,7 +39,7 @@ class AppBarContent extends StatelessWidget {
             },
             decoration: InputDecoration(
               filled: true,
-              fillColor: Colors.white,
+              fillColor: ColorManager.whiteColor,
               hintText: 'Search for books here..',
               hintStyle: const TextStyle(
                 fontSize: 13,
@@ -50,7 +52,7 @@ class AppBarContent extends StatelessWidget {
               suffixIcon: const Icon(
                 Icons.search,
                 size: 28.0,
-                color: Colors.black,
+                color: ColorManager.blackColor,
               ),
             ),
           ),

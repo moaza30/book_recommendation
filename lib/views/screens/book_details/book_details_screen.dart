@@ -1,3 +1,4 @@
+import 'package:book_recommendation/consts/color_manager.dart';
 import 'package:book_recommendation/models/books_api_manager.dart';
 import 'package:book_recommendation/views/screens/book_details/content_widget.dart';
 import 'package:flutter/cupertino.dart';
@@ -16,16 +17,16 @@ class _BooksDetailsState extends State<BooksDetails> {
   Widget build(BuildContext context) {
     books = ModalRoute.of(context)!.settings.arguments as Books;
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: ColorManager.whiteColor,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: ColorManager.whiteColor,
         elevation: 0.0,
         iconTheme: const IconThemeData(
-          color: Color.fromRGBO(90, 189, 140, 1), //change your color here
-        ),
+            color: ColorManager.mainColor //change your color here
+            ),
         title: const Text(
           'Book Details',
-          style: TextStyle(color: Colors.black),
+          style: TextStyle(color: ColorManager.blackColor),
         ),
         centerTitle: true,
       ),

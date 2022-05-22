@@ -1,3 +1,4 @@
+import 'package:book_recommendation/consts/color_manager.dart';
 import 'package:book_recommendation/controllers/books_provider.dart';
 import 'package:book_recommendation/models/books_api_manager.dart';
 import 'package:book_recommendation/views/screens/book_details/book_details_screen.dart';
@@ -35,14 +36,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: const Text(
                     'See All',
                     style: TextStyle(
-                      color: Color.fromRGBO(90, 189, 140, 1),
+                      color: ColorManager.mainColor,
                     ),
                   ),
                 ),
               ],
             ),
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height * 0.30,
             child: FutureBuilder<List<Books>?>(
@@ -57,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   return const Center(
                     child: Text(
                       'Error has occured Please try again later.',
-                      style: TextStyle(color: Color.fromRGBO(90, 189, 140, 1)),
+                      style: TextStyle(color: ColorManager.mainColor),
                     ),
                   );
                 } else {
@@ -90,7 +91,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: const Text(
                     'See All',
                     style: TextStyle(
-                      color: Color.fromRGBO(90, 189, 140, 1),
+                      color: ColorManager.mainColor,
                     ),
                   ),
                 ),

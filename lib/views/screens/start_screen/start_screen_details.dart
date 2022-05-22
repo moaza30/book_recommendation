@@ -5,6 +5,8 @@ import 'package:book_recommendation/views/screens/sign_up_screen/sign_up_screen.
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../consts/color_manager.dart';
+
 class StartScreenStyle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class StartScreenStyle extends StatelessWidget {
             style: TextStyle(
               fontWeight: FontWeight.w400,
               fontSize: 36,
-              color: Color.fromRGBO(90, 189, 140, 1),
+              color: ColorManager.mainColor,
             ),
           ),
         ),
@@ -30,7 +32,7 @@ class StartScreenStyle extends StatelessWidget {
           ),
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              primary: const Color.fromRGBO(90, 189, 140, 1),
+              primary: ColorManager.mainColor,
               minimumSize: const Size(double.infinity, 56),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
@@ -53,7 +55,7 @@ class StartScreenStyle extends StatelessWidget {
           ),
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(
-              primary: const Color.fromRGBO(90, 189, 140, 1),
+              primary: ColorManager.mainColor,
               minimumSize: const Size(double.infinity, 56),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),

@@ -11,7 +11,7 @@ class MenuScreen extends StatelessWidget {
       //   height: MediaQuery.of(context).size.height,
       child: Column(
         children: [
-          CircleAvatar(
+          const CircleAvatar(
               radius: 60,
               backgroundImage:
                   ExactAssetImage('assets/images/Rectangle 307.png')),
@@ -22,7 +22,7 @@ class MenuScreen extends StatelessWidget {
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(
-                      child: const CircularProgressIndicator.adaptive());
+                      child: CircularProgressIndicator.adaptive());
                 }
                 if (snapshot.data != null) {
                   return Text(
@@ -81,7 +81,7 @@ class MenuScreen extends StatelessWidget {
               ),
               icon: const Icon(Icons.login_outlined, color: Colors.black),
               onPressed: () {
-                Provider.of<AuthProvider>(context, listen: false).logut();
+                Provider.of<AuthProvider>(context, listen: false).logOut();
               },
               label: const Text(
                 "LogOut",
@@ -97,5 +97,4 @@ class MenuScreen extends StatelessWidget {
     );
   }
 }
-/*
-           */
+
