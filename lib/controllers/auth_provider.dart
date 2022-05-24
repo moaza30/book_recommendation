@@ -1,12 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthProvider with ChangeNotifier {
   int currentScreenIndex = 0;
   Map<String, dynamic>? userdata;
-  AccessToken? _accessToken;
+  // AccessToken? _accessToken;
 
   void changeScreen() {
     if (currentScreenIndex == 0) {
@@ -91,7 +90,7 @@ class AuthProvider with ChangeNotifier {
     }
   }
 
-  Future<UserCredential> signInWithFacebook() async {
+  /* Future<UserCredential> signInWithFacebook() async {
     try {
       final LoginResult loginResult = await FacebookAuth.instance.login(
         permissions: ['public_profile', 'email'],
@@ -114,5 +113,5 @@ class AuthProvider with ChangeNotifier {
     } catch (e) {
       throw Exception("Error has occurred Please try again later");
     }
-  }
+  }*/
 }

@@ -11,10 +11,18 @@ class MenuScreen extends StatelessWidget {
       //   height: MediaQuery.of(context).size.height,
       child: Column(
         children: [
-          const CircleAvatar(
-              radius: 60,
-              backgroundImage:
-                  ExactAssetImage('assets/images/Rectangle 307.png')),
+          (FirebaseAuth.instance.currentUser?.photoURL == null)
+              ? const CircleAvatar(
+                  radius: 60,
+                  backgroundColor: Colors.transparent,
+                  backgroundImage: ExactAssetImage('assets/images/profile.png'),
+                )
+              : CircleAvatar(
+                  radius: 60,
+                  backgroundColor: Colors.transparent,
+                  backgroundImage: NetworkImage(
+                      '${FirebaseAuth.instance.currentUser?.photoURL!}'),
+                ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: StreamBuilder(
@@ -27,18 +35,19 @@ class MenuScreen extends StatelessWidget {
                 if (snapshot.data != null) {
                   return Text(
                     '${FirebaseAuth.instance.currentUser?.displayName!}',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
+                    style: const TextStyle(
+                        fontSize: 24, fontWeight: FontWeight.w500),
                   );
                 } else {
-                  return Text(
-                    'Mooaz Adel',
+                  return const Text(
+                    'User',
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
                   );
                 }
               },
             ),
           ),
-          Text(
+          const Text(
             '10 Books',
             style: TextStyle(
                 fontSize: 16,
@@ -97,4 +106,3 @@ class MenuScreen extends StatelessWidget {
     );
   }
 }
-

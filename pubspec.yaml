@@ -42,7 +42,6 @@ dependencies:
   pull_to_refresh: ^2.0.0
   favorite_button: ^0.0.4
   google_sign_in: ^5.3.1
-  flutter_facebook_auth: ^4.3.4
   sign_button: ^2.0.2
 
 dev_dependencies:

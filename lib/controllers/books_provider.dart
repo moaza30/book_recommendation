@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:http/http.dart' as http;
-
 import '../models/books_api_manager.dart';
 
 class BooksProvider with ChangeNotifier {
@@ -10,7 +9,6 @@ class BooksProvider with ChangeNotifier {
   final String _apikey = 'AIzaSyD0crpZjOGB67NKjG8hZw8rXFpeG66QukI';
   List<Books> booksList = [];
   List<Books> books = [];
-
   var booksFuture;
 
   Future<List<Books>?> getBooks() async {

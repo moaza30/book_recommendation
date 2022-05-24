@@ -1,12 +1,9 @@
 import 'package:book_recommendation/controllers/auth_provider.dart';
-import 'package:book_recommendation/views/screens/home_screen/main_screen.dart';
 import 'package:book_recommendation/views/screens/sign_in_screen/check_box.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:provider/provider.dart';
 import 'package:sign_button/sign_button.dart';
-
 import '../../../consts/color_manager.dart';
 
 class SignInBody extends StatefulWidget {
@@ -211,8 +208,8 @@ class _SignInBodyState extends State<SignInBody> {
                         width: 120,
                         btnText: "Facebook",
                         onPressed: () {
-                          Provider.of<AuthProvider>(context, listen: false)
-                              .signInWithFacebook();
+                          /*   Provider.of<AuthProvider>(context, listen: false)
+                              .signInWithFacebook();*/
                         },
                       ),
                       const SizedBox(

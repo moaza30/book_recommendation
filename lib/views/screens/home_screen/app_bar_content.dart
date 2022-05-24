@@ -1,8 +1,6 @@
-import 'package:book_recommendation/models/books_api_manager.dart';
 import 'package:book_recommendation/views/screens/search_result/search_result.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
 import '../../../consts/color_manager.dart';
 
 class AppBarContent extends StatelessWidget {
@@ -32,7 +30,6 @@ class AppBarContent extends StatelessWidget {
             controller: controller,
             onSubmitted: (data) async {
               bookName = data;
-              print(bookName);
               Navigator.of(context)
                   .pushNamed(SearchResult.routename, arguments: bookName);
               controller.clear();
@@ -57,7 +54,23 @@ class AppBarContent extends StatelessWidget {
             ),
           ),
         ),
-        Image.asset('assets/images/profile.png'),
+        (FirebaseAuth.instance.currentUser?.photoURL == null)
+            ? const Expanded(
+                child: CircleAvatar(
+                  radius: 60,
+                  backgroundColor: Colors.transparent,
+                  backgroundImage: ExactAssetImage('assets/images/profile.png'),
+                ),
+              )
+            : Expanded(
+                child: CircleAvatar(
+                  radius: 60,
+                  backgroundColor: Colors.transparent,
+                  backgroundImage: NetworkImage(
+                    '${FirebaseAuth.instance.currentUser?.photoURL!}',
+                  ),
+                ),
+              ),
       ],
     );
   }
