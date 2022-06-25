@@ -14,8 +14,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late Books book;
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(

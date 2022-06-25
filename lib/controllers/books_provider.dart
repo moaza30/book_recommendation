@@ -9,7 +9,6 @@ class BooksProvider with ChangeNotifier {
   final String _apikey = 'AIzaSyD0crpZjOGB67NKjG8hZw8rXFpeG66QukI';
   List<Books> booksList = [];
   List<Books> books = [];
-  var booksFuture;
 
   Future<List<Books>?> getBooks() async {
     try {
