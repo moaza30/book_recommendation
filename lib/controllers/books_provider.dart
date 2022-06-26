@@ -48,7 +48,7 @@ class BooksProvider with ChangeNotifier {
 
   Future<List<Books>?>? searchBooks(String? bookName) async {
     try {
-      Uri link = Uri.parse('$baseUrl/volumes?q=$bookName&key=$_apikey');
+      Uri link = Uri.parse('$baseUrl/volumes?q=$bookName');
       http.Response response = await http.get(link);
       final jsonData = jsonDecode(response.body)['items'];
       List<Books> bookList = [];

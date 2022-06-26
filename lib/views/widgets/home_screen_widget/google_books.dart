@@ -10,6 +10,7 @@ class GoogleBooks extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      splashColor: ColorManager.mainColor,
       onTap: () {
         Navigator.of(context)
             .pushNamed(GoogleBooksDetails.routename, arguments: books);

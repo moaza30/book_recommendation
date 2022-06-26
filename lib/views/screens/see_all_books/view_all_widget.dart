@@ -1,11 +1,11 @@
 import 'package:book_recommendation/consts/color_manager.dart';
-import 'package:book_recommendation/models/books_api_manager.dart';
+import 'package:book_recommendation/models/books_model.dart';
 import 'package:book_recommendation/views/screens/book_details/google_books_details.dart';
 import 'package:flutter/material.dart';
 
-class BooksView extends StatelessWidget {
-  final Books books;
-  BooksView(this.books);
+class ViewAllBooks extends StatelessWidget {
+  final BookModel books;
+  ViewAllBooks(this.books);
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +36,8 @@ class BooksView extends StatelessWidget {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(7),
-                child: Image.network(
-                  books.thumbnail!,
-                  height: 50,
-                  width: 50,
+                child: Image.asset(
+                  "assets/images/book_cover.jpg",
                   fit: BoxFit.fill,
                 ),
               ),
@@ -75,7 +73,7 @@ class BooksView extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "Published Date: ${books.publishedDate!}",
+                  "Pages: ${books.pages!.toInt()}",
                   softWrap: false,
                   maxLines: 1,
                   overflow: TextOverflow.fade,

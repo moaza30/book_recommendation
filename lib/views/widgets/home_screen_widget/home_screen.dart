@@ -2,9 +2,9 @@ import 'package:book_recommendation/consts/color_manager.dart';
 import 'package:book_recommendation/controllers/books_provider.dart';
 import 'package:book_recommendation/models/books_api_manager.dart';
 import 'package:book_recommendation/models/books_model.dart';
-import 'package:book_recommendation/views/screens/book_details/book_details_screen.dart';
+import 'package:book_recommendation/views/screens/see_all_books/see_all.dart';
+import 'package:book_recommendation/views/screens/see_all_books/view_all_widget.dart';
 import 'package:book_recommendation/views/widgets/home_screen_widget/google_books.dart';
-import 'package:book_recommendation/views/widgets/home_screen_widget/list_item.dart';
 import 'package:book_recommendation/views/widgets/home_screen_widget/book_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -31,7 +31,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(
+                      SeeAllBooks.routename,
+                    );
+                  },
                   child: const Text(
                     'See All',
                     style: TextStyle(

@@ -14,6 +14,8 @@ import 'package:provider/provider.dart';
 import 'controllers/auth_provider.dart';
 import 'package:flutter/services.dart';
 
+import 'views/screens/see_all_books/see_all.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
@@ -67,6 +69,7 @@ class MyApp extends StatelessWidget {
         BooksDetails.routename: (context) => BooksDetails(),
         GoogleBooksDetails.routename: (context) => GoogleBooksDetails(),
         SearchResult.routename: (context) => SearchResult(),
+        SeeAllBooks.routename: (context) => SeeAllBooks(),
       },
     );
   }

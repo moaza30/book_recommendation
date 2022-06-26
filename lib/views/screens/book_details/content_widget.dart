@@ -1,8 +1,11 @@
 import 'package:book_recommendation/consts/color_manager.dart';
+import 'package:book_recommendation/controllers/books_provider.dart';
 import 'package:book_recommendation/models/books_model.dart';
+import 'package:book_recommendation/views/widgets/home_screen_widget/book_list.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:readmore/readmore.dart';
 
 class BookDetailsWidget extends StatelessWidget {
@@ -138,6 +141,40 @@ class BookDetailsWidget extends StatelessWidget {
                   child: Text(
                     'Other Suggestions',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height * 0.30,
+                  child: FutureBuilder<List<BookModel>?>(
+                    future: Provider.of<BooksProvider>(context, listen: false)
+                        .getBooks(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(
+                            child: CircularProgressIndicator.adaptive());
+                      }
+                      if (snapshot.data == null) {
+                        return const Center(
+                          child: Text(
+                            'Error has occured Please try again later.',
+                            style: TextStyle(color: ColorManager.mainColor),
+                          ),
+                        );
+                      } else {
+                        return Container(
+                          margin: const EdgeInsets.only(left: 10),
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: 5,
+                            itemBuilder: (context, index) {
+                              return BookList(snapshot.data![index]);
+                            },
+                          ),
+                        );
+                      }
+                    },
                   ),
                 ),
               ],

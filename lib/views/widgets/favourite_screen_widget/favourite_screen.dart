@@ -18,10 +18,10 @@ class FavouriteScreen extends StatelessWidget {
           margin: const EdgeInsets.all(15),
           child: const Text(
             'Favourites',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
           ),
         ),
-        StreamBuilder<QuerySnapshot>(
+        /*  StreamBuilder<QuerySnapshot>(
             stream: null,
             builder: (context, snapshot) {
               FirebaseFirestore.instance
@@ -49,7 +49,7 @@ class FavouriteScreen extends StatelessWidget {
                   },
                 ),
               );
-            }),
+            }),*/
       ],
     );
   }

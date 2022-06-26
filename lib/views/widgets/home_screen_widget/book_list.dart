@@ -11,6 +11,7 @@ class BookList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
+      splashColor: ColorManager.mainColor,
       onTap: () {
         Navigator.of(context)
             .pushNamed(BooksDetails.routename, arguments: books);
