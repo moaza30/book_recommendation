@@ -1,19 +1,18 @@
 import 'package:book_recommendation/controllers/books_provider.dart';
 import 'package:book_recommendation/models/books_api_manager.dart';
-import 'package:book_recommendation/views/widgets/home_screen_widget/book_list.dart';
+import 'package:book_recommendation/views/widgets/home_screen_widget/book_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../../consts/color_manager.dart';
 
-/*class SearchResult extends StatefulWidget {
+class SearchResult extends StatefulWidget {
   static const String routename = 'SearchResult';
 
   @override
   State<SearchResult> createState() => _SearchResultState();
-}*/
+}
 
-/*class _SearchResultState extends State<SearchResult> {
+class _SearchResultState extends State<SearchResult> {
   String? bookName;
   final ScrollController _scrollController = ScrollController();
 
@@ -23,6 +22,7 @@ import '../../../consts/color_manager.dart';
 
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: ColorManager.mainColor,
           title: const Text('Search Result'),
           centerTitle: true,
         ),
@@ -49,16 +49,13 @@ import '../../../consts/color_manager.dart';
                         ),
                       );
                     } else {
-                      return Container(
-                        margin: const EdgeInsets.only(left: 10),
-                        child: ListView.builder(
-                          shrinkWrap: true,
-                          scrollDirection: Axis.vertical,
-                          itemCount: snapshot.data!.length,
-                          itemBuilder: (context, index) {
-                            return BookList(snapshot.data![index]);
-                          },
-                        ),
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: (context, index) {
+                          return BooksView(snapshot.data![index]);
+                        },
                       );
                     }
                   },
@@ -68,4 +65,4 @@ import '../../../consts/color_manager.dart';
           ),
         ));
   }
-}*/
+}

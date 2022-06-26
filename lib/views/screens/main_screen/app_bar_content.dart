@@ -17,7 +17,7 @@ class AppBarContent extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
             boxShadow: const [
               BoxShadow(
-                color: Colors.black12,
+                color: ColorManager.black2,
                 spreadRadius: 2,
                 blurRadius: 4,
                 offset: Offset(0, 3),
@@ -30,6 +30,8 @@ class AppBarContent extends StatelessWidget {
             controller: controller,
             onSubmitted: (data) async {
               bookName = data;
+              Navigator.of(context)
+                  .pushNamed(SearchResult.routename, arguments: bookName);
               controller.clear();
             },
             decoration: InputDecoration(
@@ -38,7 +40,7 @@ class AppBarContent extends StatelessWidget {
               hintText: 'Search for books here..',
               hintStyle: const TextStyle(
                 fontSize: 13,
-                color: Color.fromRGBO(33, 33, 33, 0.5),
+                color: ColorManager.black2,
               ),
               border: OutlineInputBorder(
                 borderSide: BorderSide.none,
@@ -55,14 +57,15 @@ class AppBarContent extends StatelessWidget {
         (FirebaseAuth.instance.currentUser?.photoURL == null)
             ? const Expanded(
                 child: CircleAvatar(
-                  radius: 60,
+                  radius: 20,
                   backgroundColor: Colors.transparent,
-                  backgroundImage: ExactAssetImage('assets/images/profile.png'),
+                  backgroundImage:
+                      ExactAssetImage('assets/images/profile_pic.png'),
                 ),
               )
             : Expanded(
                 child: CircleAvatar(
-                  radius: 60,
+                  radius: 20,
                   backgroundColor: Colors.transparent,
                   backgroundImage: NetworkImage(
                     '${FirebaseAuth.instance.currentUser?.photoURL!}',

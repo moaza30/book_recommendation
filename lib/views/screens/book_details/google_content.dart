@@ -1,14 +1,14 @@
 import 'package:book_recommendation/consts/color_manager.dart';
-import 'package:book_recommendation/models/books_model.dart';
+import 'package:book_recommendation/models/books_api_manager.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 
-class BookDetailsWidget extends StatelessWidget {
-  late BookModel books;
+class GoogleBookDetailsWidget extends StatelessWidget {
+  late Books books;
   bool isFavorite = false;
-  BookDetailsWidget(this.books);
+  GoogleBookDetailsWidget(this.books);
 
   CollectionReference booksID =
       FirebaseFirestore.instance.collection('booksID');
@@ -35,11 +35,11 @@ class BookDetailsWidget extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(top: 25, bottom: 10),
-            child: Image.asset(
-              "assets/images/book_cover.jpg",
-              width: MediaQuery.of(context).size.width * 0.45,
-              height: MediaQuery.of(context).size.height * 0.31,
-              fit: BoxFit.fill,
+            child: Image.network(
+              books.thumbnail!,
+              height: 250,
+              width: 180,
+              fit: BoxFit.cover,
             ),
           ),
           Padding(
@@ -53,7 +53,7 @@ class BookDetailsWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 5),
             child: Text(
-              'Pages: ${books.pages!.toInt()}',
+              "Published At: ${books.publishedDate}",
               style: const TextStyle(color: Color(0xFFACB1B6), fontSize: 15),
             ),
           ),
@@ -132,13 +132,6 @@ class BookDetailsWidget extends StatelessWidget {
                   books.authors!,
                   style:
                       const TextStyle(fontSize: 16, color: Color(0xFF6D727A)),
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 20),
-                  child: Text(
-                    'Other Suggestions',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                  ),
                 ),
               ],
             ),

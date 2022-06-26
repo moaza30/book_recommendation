@@ -1,13 +1,11 @@
 import 'package:book_recommendation/controllers/books_provider.dart';
-import 'package:book_recommendation/views/screens/home_screen/app_bar_content.dart';
 import 'package:book_recommendation/views/widgets/category_screen_widget/category_screen.dart';
 import 'package:book_recommendation/views/widgets/favourite_screen_widget/favourite_screen.dart';
 import 'package:book_recommendation/views/widgets/home_screen_widget/home_screen.dart';
-import 'package:book_recommendation/views/widgets/menu_screen_widget/menu_screen.dart';
+import 'package:book_recommendation/views/widgets/settings_screen_widget/settings_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
 import '../../../consts/color_manager.dart';
+import 'app_bar_content.dart';
 
 class MainScreen extends StatefulWidget {
   static const String routeName = "HomeScreen";
@@ -25,7 +23,7 @@ class _MainScreenState extends State<MainScreen> {
     HomeScreen(),
     FavouriteScreen(),
     CategoryScreen(),
-    MenuScreen(),
+    SettingsScreen(),
   ];
 
   // function for select widget
@@ -44,7 +42,7 @@ class _MainScreenState extends State<MainScreen> {
               automaticallyImplyLeading: false,
               backgroundColor: ColorManager.whiteColor,
               elevation: 0.0,
-              title: Text(''),
+              title: const Text(''),
             )
           : AppBar(
               automaticallyImplyLeading: false,

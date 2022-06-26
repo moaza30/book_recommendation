@@ -2,23 +2,28 @@ import 'package:book_recommendation/controllers/auth_provider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'dark_mode_button.dart';
+import 'language_widget.dart';
+import 'package:book_recommendation/consts/color_manager.dart';
 
-class MenuScreen extends StatelessWidget {
+class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
       //   height: MediaQuery.of(context).size.height,
+      margin: const EdgeInsets.symmetric(horizontal: 25),
       child: Column(
         children: [
           (FirebaseAuth.instance.currentUser?.photoURL == null)
               ? const CircleAvatar(
-                  radius: 60,
+                  radius: 65,
                   backgroundColor: Colors.transparent,
-                  backgroundImage: ExactAssetImage('assets/images/profile.png'),
+                  backgroundImage:
+                      ExactAssetImage('assets/images/profile_pic.png'),
                 )
               : CircleAvatar(
-                  radius: 60,
+                  radius: 65,
                   backgroundColor: Colors.transparent,
                   backgroundImage: NetworkImage(
                       '${FirebaseAuth.instance.currentUser?.photoURL!}'),
@@ -34,29 +39,38 @@ class MenuScreen extends StatelessWidget {
                 }
                 if (snapshot.data != null) {
                   return Text(
-                    '${FirebaseAuth.instance.currentUser?.displayName!}',
+                    'Hello ${FirebaseAuth.instance.currentUser?.displayName!}',
                     style: const TextStyle(
-                        fontSize: 24, fontWeight: FontWeight.w500),
+                      fontSize: 24,
+                      fontWeight: FontWeight.w500,
+                    ),
                   );
                 } else {
                   return const Text(
-                    'User',
+                    'No User',
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.w500),
                   );
                 }
               },
             ),
           ),
-          const Text(
-            '10 Books',
-            style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w400,
-                color: Color(0xFF707070)),
-          ),
+          darkModeWidget(),
+          languageWidget(),
           Container(
             width: MediaQuery.of(context).size.width * 0.9,
             margin: const EdgeInsets.symmetric(vertical: 20),
+            decoration: BoxDecoration(
+              color: ColorManager.whiteColor,
+              borderRadius: BorderRadius.circular(15),
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.black12,
+                  spreadRadius: 0.1,
+                  blurRadius: 3,
+                  offset: Offset(0, 5),
+                ),
+              ],
+            ),
             child: ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
@@ -65,6 +79,7 @@ class MenuScreen extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 primary: Colors.white,
                 padding: const EdgeInsets.all(15),
+                elevation: 0.0,
               ),
               icon: const Icon(Icons.lock_open_outlined, color: Colors.black),
               onPressed: () {},
@@ -79,6 +94,18 @@ class MenuScreen extends StatelessWidget {
           ),
           Container(
             width: MediaQuery.of(context).size.width * 0.9,
+            decoration: BoxDecoration(
+              color: ColorManager.whiteColor,
+              borderRadius: BorderRadius.circular(15),
+              boxShadow: const [
+                BoxShadow(
+                  color: Colors.black12,
+                  spreadRadius: 0.1,
+                  blurRadius: 3,
+                  offset: Offset(0, 5),
+                ),
+              ],
+            ),
             child: ElevatedButton.icon(
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
@@ -87,15 +114,16 @@ class MenuScreen extends StatelessWidget {
                 alignment: Alignment.centerLeft,
                 primary: Colors.white,
                 padding: const EdgeInsets.all(15),
+                elevation: 0.0,
               ),
-              icon: const Icon(Icons.login_outlined, color: Colors.black),
+              icon: const Icon(Icons.login_outlined, color: Colors.red),
               onPressed: () {
                 Provider.of<AuthProvider>(context, listen: false).logOut();
               },
               label: const Text(
                 "LogOut",
                 style: TextStyle(
-                    color: Colors.black,
+                    color: Colors.red,
                     fontSize: 16,
                     fontWeight: FontWeight.w400),
               ),

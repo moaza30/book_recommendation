@@ -1,10 +1,8 @@
-import 'package:book_recommendation/views/screens/home_screen/main_screen.dart';
 import 'package:book_recommendation/views/screens/sign_up_screen/check_box.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:book_recommendation/controllers/auth_provider.dart';
 import 'package:email_validator/email_validator.dart';
-
 import '../../../consts/color_manager.dart';
 
 class SignUpBody extends StatefulWidget {

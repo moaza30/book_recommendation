@@ -1,22 +1,21 @@
 import 'package:book_recommendation/consts/color_manager.dart';
 import 'package:book_recommendation/models/books_api_manager.dart';
-import 'package:book_recommendation/models/books_model.dart';
-import 'package:book_recommendation/views/screens/book_details/book_details_screen.dart';
+import 'package:book_recommendation/views/screens/book_details/google_books_details.dart';
 import 'package:flutter/material.dart';
 
-class BookList extends StatelessWidget {
-  final BookModel books;
-  BookList(this.books);
+class GoogleBooks extends StatelessWidget {
+  final Books books;
+  GoogleBooks(this.books);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         Navigator.of(context)
-            .pushNamed(BooksDetails.routename, arguments: books);
+            .pushNamed(GoogleBooksDetails.routename, arguments: books);
       },
       child: Container(
-        width: MediaQuery.of(context).size.width * 0.35,
+        width: MediaQuery.of(context).size.width * 0.30,
         margin: const EdgeInsets.only(right: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,8 +35,8 @@ class BookList extends StatelessWidget {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(7),
-                child: Image.asset(
-                  "assets/images/book_cover.jpg",
+                child: Image.network(
+                  books.thumbnail!,
                   fit: BoxFit.fill,
                 ),
               ),

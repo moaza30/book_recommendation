@@ -9,6 +9,7 @@ class BooksProvider with ChangeNotifier {
   String baseUrl = 'https://www.googleapis.com/books/v1';
   final String _apikey = 'AIzaSyD0crpZjOGB67NKjG8hZw8rXFpeG66QukI';
   List<BookModel> booksList = [];
+  List<Books> googleBooks = [];
   List<Books> books = [];
 
   Future<List<BookModel>?> getBooks() async {
@@ -22,30 +23,28 @@ class BooksProvider with ChangeNotifier {
       }
       booksList.addAll(bookList);
       // ChangeNotifier();
-      print(booksList[1]);
       return booksList;
     } catch (error) {
       print(error);
     }
   }
-  /* Future<List<Books>?> getBooks() async {
+
+  Future<List<Books>?> getGoogleBooks() async {
     try {
       Uri link = Uri.parse('$baseUrl/volumes?q=flutter');
-      /* final response = await http.get(Uri.parse(
-        "https://www.googleapis.com/books/v1/volumes?q=$query&startIndex=$page&maxResults=40")); */
       http.Response response = await http.get(link);
       final jsonData = jsonDecode(response.body)['items'];
       List<Books> bookList = [];
       for (var item in jsonData) {
         bookList.add(Books.fromJson(item));
       }
-      booksList.addAll(bookList);
+      googleBooks.addAll(bookList);
       // ChangeNotifier();
-      return booksList;
+      return googleBooks;
     } catch (error) {
       print(error);
     }
-  }*/
+  }
 
   Future<List<Books>?>? searchBooks(String? bookName) async {
     try {

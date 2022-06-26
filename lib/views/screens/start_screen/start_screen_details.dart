@@ -1,10 +1,6 @@
-import 'package:book_recommendation/controllers/books_provider.dart';
-import 'package:book_recommendation/views/screens/home_screen/main_screen.dart';
 import 'package:book_recommendation/views/screens/sign_in_screen/sign_in_screnn.dart';
 import 'package:book_recommendation/views/screens/sign_up_screen/sign_up_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
 import '../../../consts/color_manager.dart';
 
 class StartScreenStyle extends StatelessWidget {
