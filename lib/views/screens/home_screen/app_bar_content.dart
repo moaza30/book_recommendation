@@ -30,8 +30,6 @@ class AppBarContent extends StatelessWidget {
             controller: controller,
             onSubmitted: (data) async {
               bookName = data;
-              Navigator.of(context)
-                  .pushNamed(SearchResult.routename, arguments: bookName);
               controller.clear();
             },
             decoration: InputDecoration(

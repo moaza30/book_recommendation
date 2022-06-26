@@ -1,5 +1,6 @@
 import 'package:book_recommendation/consts/color_manager.dart';
 import 'package:book_recommendation/models/books_api_manager.dart';
+import 'package:book_recommendation/models/books_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:favorite_button/favorite_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -7,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
 
 class BookDetailsWidget extends StatelessWidget {
-  late Books books;
+  late BookModel books;
   bool isFavorite = false;
   BookDetailsWidget(this.books);
 
@@ -37,7 +38,7 @@ class BookDetailsWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 25, bottom: 10),
             child: Image.network(
-              books.thumbnail!,
+              "https://st2.depositphotos.com/1055089/6382/v/950/depositphotos_63823557-stock-illustration-abstract-book-cover-template.jpg",
               height: 250,
               width: 180,
               fit: BoxFit.cover,
@@ -54,7 +55,7 @@ class BookDetailsWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(top: 5),
             child: Text(
-              'Published: ${books.publishedDate}',
+              'Pages: ${books.pages}',
               style: const TextStyle(color: Color(0xFFACB1B6), fontSize: 15),
             ),
           ),
@@ -90,10 +91,6 @@ class BookDetailsWidget extends StatelessWidget {
                   valueChanged: (_isFavorite) {
                     addFavorite();
                     isFavorite = !isFavorite;
-                    booksID.add({
-                      'bookID': books.id,
-                      'userId': FirebaseAuth.instance.currentUser!.email
-                    });
                   },
                   isFavorite: false),
               const Spacer(

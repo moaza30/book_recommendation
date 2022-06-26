@@ -1,10 +1,11 @@
 import 'package:book_recommendation/consts/color_manager.dart';
 import 'package:book_recommendation/models/books_api_manager.dart';
+import 'package:book_recommendation/models/books_model.dart';
 import 'package:book_recommendation/views/screens/book_details/book_details_screen.dart';
 import 'package:flutter/material.dart';
 
 class BookList extends StatelessWidget {
-  final Books books;
+  final BookModel books;
   BookList(this.books);
 
   @override
@@ -36,7 +37,7 @@ class BookList extends StatelessWidget {
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(7),
                 child: Image.network(
-                  books.thumbnail!,
+                  "https://images.assetsdelivery.com/compings_v2/orson/orson1412/orson141200001.jpg",
                   fit: BoxFit.fill,
                 ),
               ),

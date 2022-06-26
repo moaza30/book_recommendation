@@ -1,12 +1,12 @@
 import 'package:book_recommendation/consts/color_manager.dart';
 import 'package:book_recommendation/controllers/books_provider.dart';
 import 'package:book_recommendation/models/books_api_manager.dart';
+import 'package:book_recommendation/models/books_model.dart';
 import 'package:book_recommendation/views/screens/book_details/book_details_screen.dart';
 import 'package:book_recommendation/views/widgets/home_screen_widget/list_item.dart';
 import 'package:book_recommendation/views/widgets/home_screen_widget/book_list.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height * 0.30,
-            child: FutureBuilder<List<Books>?>(
+            child: FutureBuilder<List<BookModel>?>(
               future:
                   Provider.of<BooksProvider>(context, listen: false).getBooks(),
               builder: (context, snapshot) {

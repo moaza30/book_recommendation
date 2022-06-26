@@ -64,7 +64,7 @@ class MyApp extends StatelessWidget {
         SignInScreen.routename: (context) => SignInScreen(),
         MainScreen.routeName: (context) => MainScreen(),
         BooksDetails.routename: (context) => BooksDetails(),
-        SearchResult.routename: (context) => SearchResult(),
+        // SearchResult.routename: (context) => SearchResult(),
       },
     );
   }

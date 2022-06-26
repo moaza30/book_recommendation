@@ -1,5 +1,6 @@
 import 'package:book_recommendation/consts/color_manager.dart';
 import 'package:book_recommendation/models/books_api_manager.dart';
+import 'package:book_recommendation/models/books_model.dart';
 import 'package:book_recommendation/views/screens/book_details/content_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,11 +12,11 @@ class BooksDetails extends StatefulWidget {
 }
 
 class _BooksDetailsState extends State<BooksDetails> {
-  late Books books;
+  late BookModel books;
 
   @override
   Widget build(BuildContext context) {
-    books = ModalRoute.of(context)!.settings.arguments as Books;
+    books = ModalRoute.of(context)!.settings.arguments as BookModel;
     return Scaffold(
       backgroundColor: ColorManager.whiteColor,
       appBar: AppBar(

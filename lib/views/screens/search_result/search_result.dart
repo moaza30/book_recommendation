@@ -6,14 +6,14 @@ import 'package:provider/provider.dart';
 
 import '../../../consts/color_manager.dart';
 
-class SearchResult extends StatefulWidget {
+/*class SearchResult extends StatefulWidget {
   static const String routename = 'SearchResult';
 
   @override
   State<SearchResult> createState() => _SearchResultState();
-}
+}*/
 
-class _SearchResultState extends State<SearchResult> {
+/*class _SearchResultState extends State<SearchResult> {
   String? bookName;
   final ScrollController _scrollController = ScrollController();
 
@@ -68,4 +68,4 @@ class _SearchResultState extends State<SearchResult> {
           ),
         ));
   }
-}
+}*/
