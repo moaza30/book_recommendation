@@ -1,6 +1,6 @@
 import 'package:book_recommendation/consts/color_manager.dart';
 import 'package:book_recommendation/models/books_model.dart';
-import 'package:book_recommendation/views/screens/book_details/google_books_details.dart';
+import 'package:book_recommendation/views/screens/book_details/book_details_screen.dart';
 import 'package:flutter/material.dart';
 
 class ViewAllBooks extends StatelessWidget {
@@ -13,7 +13,7 @@ class ViewAllBooks extends StatelessWidget {
       splashColor: ColorManager.mainColor,
       onTap: () {
         Navigator.of(context)
-            .pushNamed(GoogleBooksDetails.routename, arguments: books);
+            .pushNamed(BooksDetails.routename, arguments: books);
       },
       child: Container(
         width: MediaQuery.of(context).size.width * 0.35,
