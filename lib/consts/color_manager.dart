@@ -9,4 +9,5 @@ class ColorManager {
   static const Color grey2 = Color.fromRGBO(239, 239, 239, 0.5);
   static const Color languageSettings = Color(0xffCB256C);
   static const Color darkSettings = Color(0xff6132e4);
+  static const Color dark = Color(0xFF292929);
 }

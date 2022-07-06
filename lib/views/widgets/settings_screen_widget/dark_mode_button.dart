@@ -2,7 +2,20 @@ import 'package:book_recommendation/consts/color_manager.dart';
 import 'package:book_recommendation/views/widgets/text_utils.dart';
 import 'package:flutter/material.dart';
 
-class darkModeWidget extends StatelessWidget {
+class darkModeWidget extends StatefulWidget {
+  @override
+  State<darkModeWidget> createState() => _darkModeWidgetState();
+}
+
+class _darkModeWidgetState extends State<darkModeWidget> {
+  late bool isLight;
+
+  @override
+  void initState() {
+    super.initState();
+    isLight = false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,11 +38,15 @@ class darkModeWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           buildIconWidget(),
-          Switch(
+          Switch.adaptive(
             activeTrackColor: ColorManager.mainColor,
             activeColor: ColorManager.mainColor,
-            value: false,
-            onChanged: (value) {},
+            value: isLight,
+            onChanged: (value) {
+              setState(() {
+                isLight = !isLight;
+              });
+            },
           ),
         ],
       ),

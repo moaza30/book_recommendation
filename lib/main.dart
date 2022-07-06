@@ -1,3 +1,4 @@
+import 'package:book_recommendation/consts/color_manager.dart';
 import 'package:book_recommendation/controllers/books_provider.dart';
 import 'package:book_recommendation/views/screens/auth_screnn.dart';
 import 'package:book_recommendation/views/screens/book_details/book_details_screen.dart';
@@ -31,13 +32,24 @@ void main() async {
         ChangeNotifierProvider(create: (context) => AuthProvider()),
         ChangeNotifierProvider(create: (context) => BooksProvider()),
       ],
-      child: const MyApp(),
+      child: MyApp(),
     ),
   );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  bool isLight = true;
+
+  void toggleTheme() {
+    setState(() {
+      isLight = !isLight;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

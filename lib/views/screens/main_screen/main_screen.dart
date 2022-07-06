@@ -9,12 +9,13 @@ import 'app_bar_content.dart';
 
 class MainScreen extends StatefulWidget {
   static const String routeName = "HomeScreen";
-
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
+  late Function toggleTheme;
+
   late int currentScreenIndex;
   BooksProvider? test;
 
